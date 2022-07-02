@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iqra University -- Awards</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/resources/static/css/adminlte/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/resources/static/css/adminlte/adminlte.min.css">
+
+    <link rel="stylesheet" href="/resources/static/css/bootstrap-table.css">
+    <link rel="stylesheet"
+          href="/resources/static/css/bootstrap-datepicker.css">
+
+
+</head>
+<body class="hold-transition layout-top-nav">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <div th:replace="/fragments/topnavbar :: nav"></div>
+    <!-- /.navbar -->
+    <input type="hidden" th:value="${oricSessionId}" id="oricSessionId">
+    <input type="hidden" th:value="${typeId}" id="typeId">
+    <input type="hidden" th:value="${proposalTypeId}" id="proposalTypeId">
+    <input type="hidden" th:value="${resourceType}" id="resourceType">
+    <input type="hidden"  id="researchId">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container">
+
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0"> IQRA University ORIC</small></h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Layout</a></li>
+                            <li class="breadcrumb-item active">Top Navigation</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+    <div class="container-xl" style="height: 500px">
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <button id="addUser" class="btn-primary">Add</button>
+            </div>
+        </div>
+        <div class="row justify-content-left"
+             style="margin-left: 10px; margin-top: 5px">
+            <table style="font-size: 14px;"
+                   class="table table-hover  table-bordered table-sm table-responsive-sm mx-auto greenTable"
+                   id="dataTable" data-unique-id="id" data-use-row-attr-func="true"
+
+            >
+            </table>
+        </div>
+    </div>
+        <div id="dataModal" class="modal fade" role="dialog"
+             aria-labelledby="myExtraLargeModalLabel" aria-hidden="true"
+             data-keyboard="false">
+            <div class="modal-dialog modal-lg" >
+
+                <!-- Modal content-->
+                <div class="modal-content">
+
+                    <div class="modal-body  ui-front" id="modalBody">
+
+
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>awardWinnerId</label>
+
+                                    <select id='awardWinnerId' class='form-control select2' style='width: 100%;'>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>title</label>
+
+                                    <input  type='text' id='title' class='form-control ' style='width: 100%;'>
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>authority</label>
+
+                                    <textarea id='authority' class='form-control ' style='width: 100%;'>
+</textarea>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>awardCertificate</label>
+
+                                    <textarea id='awardCertificate' class='form-control ' style='width: 100%;'>
+</textarea>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>brief</label>
+
+                                    <textarea id='brief' class='form-control ' style='width: 100%;'>
+</textarea>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>amount</label>
+
+                                    <input  type='number' id='amount' class='form-control ' style='width: 100%;'>
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>remarks</label>
+
+                                    <input  type='number' id='remarks' class='form-control ' style='width: 100%;'>
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>facultyId</label>
+
+                                    <select id='facultyId' class='form-control select2' style='width: 100%;'>
+                                    </select>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
+
+                        <div class="col-md-6">
+                            <label for="fileBtn" class="form-label">Files</label>
+                            <input class="form-control form-control-lg" id="fileBtn" type="file" multiple>
+                        </div>
+                            <div class="col-md-6">
+                                <label for="fileBtn" class="form-label">Uploaded Files</label>
+                                <table>
+                                    <tbody id="fileListBody">
+
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger mr-auto"
+                                id="userSaveButton" >Save</button>
+                        <button type="button" class="btn btn-danger mr-auto"
+                                id="userCloseButton" >Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- /.content-wrapper -->
+    <input type="hidden" id="userId">
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="float-right d-none d-sm-inline">
+            Anything you want
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 1998-2022 Iqra University.</strong> All rights reserved.
+    </footer>
+</div>
+</div>
+
+</body>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="/resources/static/js/jquery-3.6.0.js"></script>
+<script src="/resources/static/js/jquery-ui.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/resources/static/js/bootstrap.bundle.js"></script>
+<!-- AdminLTE App -->
+<script src="/resources/static/js/adminlte/adminlte.min.js"></script>
+<script src="/resources/static/js/bootstrap-table.js"></script>
+<script src="/resources/static/js/bootstrap-datepicker.min.js"></script>
+<script src="/resources/static/js/select2.full.min.js"></script>
+<script src="/resources/static/js/sweetalert2.all.min.js"></script>
+<script src="/resources/static/js/util.js"></script>
+<script src="/resources/static/js/remoteData.js"></script>
+<script src="/resources/static/js/upload.js"></script>
+<script>
+
+    const $table = $("#dataTable");
+    $(document).ready(function() {
+        initializeLinks();
+        initializeTable();
+        fetchRemoteData();
+    });
+
+
+
+    function initializeLinks(){
+
+        $("#addUser").click(function (){
+            $("#researchId").val(0);
+            populateFields(getEmptyDTO());
+            $("#dataModal").modal('show');
+
+        });
+        $('#dataModal').on('shown.bs.modal', function() {
+            $('.dateInput').datepicker({
+
+                dateFormat: "dd/MM/yyyy",
+                todayBtn: true,
+                todayHighlight: true,
+                container: '#modalBody'
+            });
+        });
+        $("#userCloseButton").click(function(){
+            $("#dataModal").modal("hide");
+        })
+        $("#fileBtn").change(function(){
+            handleFileUpload();
+        });
+        $("#userSaveButton").unbind();
+        $("#userSaveButton").on('click',function(){
+            let dto = $table.bootstrapTable('getRowByUniqueId', parseInt($("#researchId").val()));
+            if(dto == null || typeof dto === 'undefined')
+                dto = getEmptyDTO();
+            makeDtoFromForm(dto);
+            let fd1 = new FormData();
+            fd1.append("dto",JSON.stringify(dto));
+            $.ajax({
+                type : "POST",
+                url : "/oricAdmin/oricSession/"+$("#oricSessionId").val()+"/saveResource/"+$("#resourceType").val(),
+                data : fd1,
+                contentType: false,
+                processData: false,
+                // You are expected to receive the generated JSON (json_encode($data))
+                beforeSend : function(){
+
+                },
+                complete:function(){
+                },
+                success : function(data) {
+                    let r =  $table.bootstrapTable('getRowByUniqueId', data.id);
+                    if(r == null)
+                     $table.bootstrapTable('insertRow', {index: 0, row: data});
+                    else {
+                        $table.bootstrapTable('updateByUniqueId', {id: data.id, row: data})
+                    }
+                    $("#researchId").val(data.id);
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Saved Successfully'
+                    });
+
+                },
+                error : function(er) {
+
+                }
+            });
+        });
+    }
+
+    const columns = [{
+
+        align: 'right',
+        valign: 'middle',
+        width: '10',
+        checkbox:true,
+        title:'Select'
+    },
+        {
+            field: 'title',
+            width: '200',
+            title:'Name'
+        },
+        {
+            field: 'principalInvestigatorName',
+            width: '90',
+            title:'Principal Investigator'
+        },
+        {
+            field: 'facultyName',
+            width: '90',
+            title:'Faculty'
+        },
+        {
+            field: 'campusName',
+            width: '90',
+            title:'Campus'
+        },
+        {
+            field: 'thematicArea',
+            width: '50',
+            title:"Thematic Area"
+        },
+        {
+            field: 'fundingRequested',
+            width: '70',
+            title:'Funding Requested'
+        },
+        {
+            field: 'status',
+            width: '50',
+            title:'Status'
+        },
+        {
+            field: 'actions',
+            width: '50',
+            title: 'Actions',
+            formatter: function(value, row, index, field) {
+                let actions = [];
+                actions.push('<div  col_name="actions"  class="action_tabs">');
+                actions.push('<span class="fas fa-edit edit" ></span>');
+
+                // actions.push('<i class="fa fa-trash delete_purchase"></i>');
+                //actions.push('<a  class="fa fa-save save_purchase" aria-hidden="true" id='+row.purchaseId+'/>');
+                actions.push('</div>');
+                return actions.join("")
+            },
+            events: {
+
+                'click .delete_purchase': function(e, value, row, index) {
+                }
+                ,
+                'click .edit': function(e, value, row, index) {
+                    $("#researchId").val(row.id);
+                    populateFields(row);
+                    getFiles(row);
+                    $("#dataModal").modal('show');
+                }
+
+            }
+        }];
+
+    function initializeTable(){
+        //
+        $table.bootstrapTable({
+            url: "/oricAdmin/oricSession/"+$("#oricSessionId").val()+"/getResource/"+$("#resourceType").val(),
+            columns: columns,
+            search : true
+        })
+    }
+    function fetchRemoteData(){
+        fetchRemoteUsers(processUser);
+        fetchRemoteDataGeneric("/data/getFaculties",processFaculty);
+
+    }
+
+    function processUser(users){
+        let l = [];
+        l.push("awardWinnerId");
+        let facName = (fac) => fac.name;
+        populateListUsers(l,users,false,facName);
+    }
+
+    function processFaculty(users){
+        let l = [];
+        l.push("facultyId");
+        let facName = (fac) => fac.facultyShortName + " - "+fac.campusName;
+        populateListUsers(l,users,true,facName);
+    }
+
+    function processType(type){
+        $("#proposalTypeName").text(type.name)
+    }
+
+    function handleFileUpload(){
+        let url = "/data/uploadFileResearch/oricSessionId/"+$("#oricSessionId").val()+"/type/"+$("#typeId").val()+"/proposalType/"+$("#proposalTypeId").val()+"/";
+        let fd1 = new FormData();
+        let fi = $("#fileBtn")[0];
+        for (var i = 0; i < fi.files.length; i++) {
+            fd1.append("files", fi.files[i]);
+        }
+        let rId = $("#researchId").val();
+        let dto = (rId == null || typeof rId === 'undefined' || rId == 0) ? null :  $table.bootstrapTable('getRowByUniqueId', parseInt(rId));
+        fd1.append("dtoString",JSON.stringify(makeDtoFromForm(dto)));
+
+
+        fileUploadFunction($("#oricSessionId").val(),$("#resourceType").val(),fd1,uploadFileCallBack,errorUploadFileCallBack);
+    }
+    function uploadFileCallBack(dto){
+        updateRowInTable($table,dto);
+        $("#researchId").val(dto.id);
+        let tbody = $("#fileListBody");
+        let fi = $("#fileBtn")[0];
+        let l = [];
+        for(let i = 0; i < fi.files.length; i++){
+            l.push(fi.files[i].name);
+        }
+        createTableToShowFiles(tbody,l,getShowFileURLResearch(),getDeleteFileURLResearch(),fileDeleteCallBack);
+    }
+    function errorUploadFileCallBack(jqXHR, textStatus, errorThrown){
+        console.log(jqXHR);
+    }
+
+    function fileDeleteCallBack(fileName){
+        Toast.fire({
+            icon: 'success',
+            title: 'Deleted Successfully'
+        });
+
+        $.each($("#fileListBody").find("tr"),function(k,ele){
+            $.each($(ele).find("td"),function(i,td){
+                if($(td).find("a").html() == fileName)
+                {
+                    $(ele).remove();
+                    return;
+                }
+            });
+        });
+        console.log(fileName);
+    }
+    function getFiles(row){
+        $.ajax({
+            type : "GET",
+            url : "/data/getFiles/oricSessionId/"+$("#oricSessionId").val()+"/type/"+$("#typeId").val()+"/researchId/"+row.id+"/",
+            // You are expected to receive the generated JSON (json_encode($data))
+            beforeSend : function(){
+
+            },
+            complete:function(){
+            },
+            contentType: "application/json",
+            success : function(data) {
+                let tbody = $("#fileListBody");
+                createTableToShowFiles(tbody,data,getShowFileURLResearch(),getDeleteFileURLResearch(),fileDeleteCallBack);
+            },
+            error : function(er) {
+
+            }
+        });
+    }
+    function getEmptyDTO(){
+        let obj = new Object();
+        obj.id = '';
+        obj.awardWinnerId = '';
+        obj.title = '';
+        obj.authority = '';
+        obj.awardCertificate = '';
+        obj.brief = '';
+        obj.amount = '';
+        obj.remarks = '';
+        obj.facultyId = '';
+
+        return obj;
+    }
+
+
+    function makeDtoFromForm(dto){
+        let obj = new Object();
+        if(dto != null && typeof dto !== 'undefined')
+            obj = dto;
+        obj.id = $("#researchId").val();
+
+        obj.awardWinnerId = $('#awardWinnerId').val();
+        obj.title = $('#title').val();
+        obj.authority = $('#authority').val();
+        obj.awardCertificate = $('#awardCertificate').val();
+        obj.brief = $('#brief').val();
+        obj.amount = $('#amount').val();
+        obj.remarks = $('#remarks').val();
+        obj.facultyId = $('#facultyId').val();
+
+        return obj;
+    }
+
+
+    function populateFields(userDTO){
+        let obj = new Object();
+        if(typeof userDTO === 'undefined' || userDTO == null){
+            obj =  getEmptyDTO();
+        }
+        else{
+            obj = userDTO;
+        }
+        assignIfNotEmpty(userDTO,'awardWinnerId');
+        assignIfNotEmpty(userDTO,'facultyId');
+        $('#title').val(obj.title);
+        $('#authority').val(obj.authority);
+        $('#awardCertificate').val(obj.awardCertificate);
+        $('#brief').val(obj.brief);
+        $('#amount').val(obj.amount);
+        $('#remarks').val(obj.remarks);
+
+        $("#fileListBody").empty();
+        $("#fileBtn").val(null);
+
+
+    }
+
+
+
+
+</script>
+</html>

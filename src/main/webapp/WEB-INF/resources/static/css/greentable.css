@@ -1,0 +1,73 @@
+@charset "ISO-8859-1";
+
+.greenTable {
+  font-family: "Microsoft JhengHei", "MingLiU", "Apple LiSung" !important;
+  background-color: #FFFFFF; 
+  width: 100%;
+  text-align: center;
+}
+.greenTable table.greenTable th {
+  border: 1px solid #24943A;
+  padding: 3px 2px;
+}
+.greenTable tbody td {
+  font-size: 13px;
+  border: 1px solid rgb(128,189,140);
+  padding: 3px 2px;
+}
+
+
+.greenTable thead {
+ background: #792396;
+  background: -moz-linear-gradient(top, #9a5ab0 0%, #8639a0 66%, #792396 100%);
+  background: -webkit-linear-gradient(top, #9a5ab0 0%, #8639a0 66%, #792396 100%);
+  background: linear-gradient(to bottom, #9a5ab0 0%, #8639a0 66%, #792396 100%);
+  border-bottom: 0px solid #444444;
+}
+.greenTable thead th {
+  font-size: 14px;
+  font-weight: bold;
+  color: #F0F0F0;
+  text-align: left;
+  border-left: 1px solid #24943A;
+   border: 1px solid rgb(204, 242, 211);
+  
+}
+.greenTable thead th:first-child {
+
+  
+}
+
+
+    .success {
+        background: none repeat scroll 0 0 #FFCF8B;
+        color: #000000;
+    }
+    
+ .divHeader{
+ background: #792396;
+  background: -moz-linear-gradient(top, #9a5ab0 0%, #8639a0 66%, #792396 100%);
+  background: -webkit-linear-gradient(top, #9a5ab0 0%, #8639a0 66%, #792396 100%);
+  background: linear-gradient(to bottom, #9a5ab0 0%, #8639a0 66%, #792396 100%);
+  border-bottom: 0px solid #444444;
+    font-size: 14px;
+  font-weight: bold;
+  color: #F0F0F0;
+  text-align: left;
+  border-left: 2px solid #24943A;
+ }
+ 
+ .btn-bs-file{
+    position:relative;
+}
+.btn-bs-file input[type="file"]{
+    position: absolute;
+    top: -9999999;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    width:0;
+    height:0;
+    outline: none;
+    cursor: inherit;
+}
+

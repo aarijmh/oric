@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iqra University -- Oric Session</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/resources/static/css/adminlte/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/resources/static/css/adminlte/adminlte.min.css">
+
+    <link rel="stylesheet" href="/resources/static/css/bootstrap-table.css">
+    <link rel="stylesheet"
+          href="/resources/static/css/bootstrap-datepicker.css">
+
+
+</head>
+<body class="hold-transition layout-top-nav">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <div th:replace="/fragments/topnavbar :: nav"></div>
+    <!-- /.navbar -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container">
+
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0"> IQRA University ORIC</small></h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Layout</a></li>
+                            <li class="breadcrumb-item active">Top Navigation</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <div class="container-xl">
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <button id="addUser" class="btn-primary">Add</button>
+                </div>
+            </div>
+            <div class="row justify-content-left"
+                 style="margin-left: 10px; margin-top: 5px">
+                <input type="hidden" th:value="${oricSessionId}" id="oricSessionId">
+
+
+
+    <ul class="list-group">
+        <li class="list-group-item"><a id="positions" href="#">Positions</a></li>
+        <li class="list-group-item"><a id="oricSessionHECResearch" href="#">Research proposals submitted for funding by HEC</a></li>
+        <li class="list-group-item"><a id="oricSessionNoNHECResearch" href="#">Research Proposals Submitted for Funding (from non HEC source - National or International)</a></li>
+        <li class="list-group-item"><a id="jointNoNHECResearch" href="#">Joint Research Projects Submitted (National / International Funding Agencies)</a></li>
+        <li class="list-group-item"><a id="policyCase" href="#">Policy Advocacy or Case Studies Presented to Government Departments</a></li>
+        <li class="list-group-item"><a id="researchLink" href="#">Research Links established with other HEIs / Corporate Sector / Industry / Community (National / International)</a></li>
+        <li class="list-group-item"><a id="researchContract" href="#">Contract Research Awarded by Industry or Government Organizations (National / International)</a></li>
+        <li class="list-group-item"><a id="consultancyContract" href="#"> Consultancy Contracts Executed through ORIC with Industry, Commerce or Government</a></li>
+        <li class="list-group-item"><a id="oricReport" href="#"> Oric Reports</a></li>
+        <li class="list-group-item"><a id="intellectualProperty" href="#"> Intellectual Property</a></li>
+        <li class="list-group-item"><a id="license" href="#"> Licenses</a></li>
+        <li class="list-group-item"><a id="creativeProduct" href="#"> Science / Arts Products or Any Creative Activity Performed / Displayed at National or International Level</a></li>
+        <li class="list-group-item"><a id="award" href="#">National or International Honors or Awards Won (in Research Excellence, Innovation & Commercialization) </a></li>
+        <li class="list-group-item"><a id="agreementCollaborative" href="#"> Agreements Signed for Collaboration with Industry, Government or Community (at National / International Level) </a></li>
+        <li class="list-group-item"><a id="visitRepresentative" href="#"> Number of Visits by Representatives of Industry or Community Members Regarding Potential Research Subjects</a></li>
+        <li class="list-group-item"><a id="trainings" href="#"> Trainings</a></li>
+        <li class="list-group-item"><a id="announcements" href="#"> Announcements</a></li>
+
+</ul>
+            </div>
+        </div>
+
+        <!-- /.content-wrapper -->
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <!-- To the right -->
+            <div class="float-right d-none d-sm-inline">
+                Anything you want
+            </div>
+            <!-- Default to the left -->
+            <strong>Copyright &copy; 1998-2022 Iqra University.</strong> All rights reserved.
+        </footer>
+    </div>
+</div>
+
+</body>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="/resources/static/js/jquery-3.6.0.js"></script>
+<script src="/resources/static/js/jquery-ui.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/resources/static/js/bootstrap.bundle.js"></script>
+<!-- AdminLTE App -->
+<script src="/resources/static/js/adminlte/adminlte.min.js"></script>
+<script src="/resources/static/js/bootstrap-table.js"></script>
+<script src="/resources/static/js/bootstrap-datepicker.min.js"></script>
+<script src="/resources/static/js/select2.full.min.js"></script>
+<script src="/resources/static/js/sweetalert2.all.min.js"></script>
+
+<script src="/resources/static/js/util.js"></script>
+<script>
+
+    const $table = $("#dataTable");
+    const oricSessionid = $("#oricSessionId").val();
+    $(document).ready(function() {
+        initializeLinks();
+        initializeTable();
+    });
+
+    function initializeLinks(){
+        $("#oricSessionHECResearch").click(function(){
+            window.location.href = "/oricAdmin/oricSession/"+$("#oricSessionId").val()+"/showResource/research/"
+        });
+
+        $("#oricSessionNoNHECResearch").click(function(){
+            window.location.href = "/oricAdmin/oricSession/"+$("#oricSessionId").val()+"/showResource/nonhec"
+        });
+        $("#jointNoNHECResearch").click(function(){
+            window.location.href = "/oricAdmin/oricSession/"+$("#oricSessionId").val()+"/showResource/jointresearch"
+        });
+        $("#policyCase").click(function(){
+            window.location.href = "/oricAdmin/oricSession/"+$("#oricSessionId").val()+"/showResource/policy"
+        });
+        $("#researchLink").click(function(){
+            window.location.href = "/oricAdmin/oricSession/"+$("#oricSessionId").val()+"/showResource/researchLink"
+        });
+        $("#researchContract").click(function(){
+            window.location.href = "/oricAdmin/oricSession/"+$("#oricSessionId").val()+"/showResource/researchContract"
+        });
+        $("#consultancyContract").click(function(){
+            window.location.href = "/oricAdmin/oricSession/"+$("#oricSessionId").val()+"/showResource/consultancyContract"
+        });
+        $("#oricReport").click(function(){
+            window.location.href = "/oricAdmin/oricSession/"+$("#oricSessionId").val()+"/showResource/oricReport"
+        });
+        $("#intellectualProperty").click(function(){
+            window.location.href = "/oricAdmin/oricSession/"+$("#oricSessionId").val()+"/showResource/intellectualProperty"
+        });
+        $("#license").click(function(){
+            window.location.href = "/oricAdmin/oricSession/"+$("#oricSessionId").val()+"/showResource/license"
+        });
+        $("#creativeProduct").click(function(){
+            window.location.href = getShowUrlOfResource(oricSessionid,"creativeProduct");
+        });
+        $("#award").click(function(){
+            window.location.href = getShowUrlOfResource(oricSessionid,"award");
+        });
+        $("#agreementCollaborative").click(function(){
+            window.location.href = getShowUrlOfResource(oricSessionid,"agreementCollab");
+        });
+        $("#visitRepresentative").click(function(){
+            window.location.href = getShowUrlOfResource(oricSessionid,"visitRepresentative");
+        });
+        $("#trainings").click(function(){
+            window.location.href = getShowUrlOfResource(oricSessionid,"trainings");
+        });
+        $("#positions").click(function(){
+            window.location.href = getShowUrlOfResource(oricSessionid,"positions");
+        });
+
+        $("#announcements").click(function(){
+            window.location.href = getShowUrlOfResource(oricSessionid,"announcements");
+        });
+
+
+
+//
+        $("#addUser").click(function (){
+            $("#dataModal").modal('show');
+
+        });
+        $('#dataModal').on('shown.bs.modal', function() {
+            $('.dateInput').datepicker({
+
+                dateFormat: "mm/dd/yyyy",
+                todayBtn: true,
+                todayHighlight: true,
+                container: '#modalBody'
+            });
+        });
+        $("#userSaveButton").unbind();
+        $("#userSaveButton").on('click',function(){
+            let dto = makeDtoFromForm();
+            $.ajax({
+                type : "POST",
+                url : "/universityAdmin/saveUser",
+                data : JSON.stringify(dto),
+                // You are expected to receive the generated JSON (json_encode($data))
+                beforeSend : function(){
+
+                },
+                complete:function(){
+                },
+                contentType: "application/json",
+                success : function(data) {
+                    let r =  $table.bootstrapTable('getRowByUniqueId', data.id);
+                    if(r == null)
+                        $table.bootstrapTable('insertRow', {index: 0, row: data});
+                    else {
+                        $table.bootstrapTable('updateByUniqueId', {id: data.id, row: data})
+                    }
+                    $("#dataModal").modal('hide');
+                },
+                error : function(er) {
+
+                }
+            });
+        });
+    }
+
+    function populateFields(userDTO){
+        let dto = new Object();
+        if(typeof userDTO === 'undefined' || userDTO == null){
+            dto =  getEmptyDTO();
+        }
+        else{
+            dto = userDTO;
+        }
+
+        $("#userId").val(dto.id);
+        $("#userSalutation").val(dto.salutation);
+        $("#userFirstName").val(dto.firstName);
+        $("#userMiddleName").val(dto.middleName);
+        $("#userLastName").val(dto.lastName);
+        $("#userEmail").val(dto.email);
+        $("#userPhone").val(dto.phone);
+        $("#userMobile").val(dto.mobile);
+        $("#userPermanentStatus").val(dto.permanentStatus);
+        $("#userQLevel").val(dto.qualificationLevel);
+        $("#userQTitle").val(dto.qualificationTitle);
+        $("#userCnic").val(dto.cnic);
+        $("#userPUrl").val(dto.personalUrl);
+        $("#userFStudy").val( dto.fieldOfStudy);
+        $("#userDOB").val(dto.dob);
+        $("#userJDate").val(dto.joinningDate);
+    }
+    const columns = [{
+        field: 'id',
+        align: 'right',
+        valign: 'middle',
+        width: '10',
+        checkbox:false,
+        title:'Select'
+    },
+        {
+            field: 'name',
+            width: '200',
+            title:'Name'
+        },
+        {
+            field: 'email',
+            width: '90',
+            title:'Email'
+        },
+        {
+            field: 'permanentStatus',
+            width: '90',
+            title:'Permanent Status'
+        },
+        {
+            field: 'cnic',
+            width: '50',
+            title:"CNIC"
+        },
+        {
+            field: 'qualificationTitle',
+            width: '20',
+            title:'Qualification Title'
+        },
+        {
+            field: 'qualificationLevel',
+            width: '50',
+            title:'Qualification Level'
+        },
+        {
+            field: 'fieldOfStudy',
+            width: '50',
+            title:'Field Of Study'
+        },
+        {
+            field: 'actions',
+            width: '50',
+            title: 'Actions',
+            formatter: function(value, row, index, field) {
+                let actions = [];
+                actions.push('<div  col_name="actions"  class="action_tabs">');
+                actions.push('<span class="fas fa-edit edit" ></span>');
+
+                // actions.push('<i class="fa fa-trash delete_purchase"></i>');
+                //actions.push('<a  class="fa fa-save save_purchase" aria-hidden="true" id='+row.purchaseId+'/>');
+                actions.push('</div>');
+                return actions.join("")
+            },
+            events: {
+
+                'click .delete_purchase': function(e, value, row, index) {
+                }
+                ,
+                'click .edit': function(e, value, row, index) {
+                    populateFields(row);
+                    $("#dataModal").modal('show');
+                }
+
+            }
+        }];
+
+    function initializeTable(){
+        //
+        $table.bootstrapTable({
+            url: "/universityAdmin/getUsers",
+            columns: columns,
+            search : true
+        })
+    }
+
+    function makeDtoFromForm(){
+        let dto = new Object();
+        dto.id = $("#userId").val();
+        dto.salutation = $("#userSalutation").val();
+        dto.firstName = $("#userFirstName").val();
+        dto.middleName = $("#userMiddleName").val();
+        dto.lastName = $("#userLastName").val();
+        dto.email = $("#userEmail").val();
+        dto.phone = $("#userPhone").val();
+        dto.mobile = $("#userMobile").val();
+        dto.permanentStatus = $("#userPermanentStatus").val();
+        dto.qualificationLevel = $("#userQLevel").val();
+        dto.qualificationTitle = $("#userQTitle").val();
+        dto.cnic = $("#userCnic").val();
+        dto.personalUrl = $("#userPUrl").val();
+        dto.fieldOfStudy = $("#userFStudy").val();
+        dto.dob = $("#userDOB").val();
+        dto.joinningDate = $("#userJDate").val();
+        return dto;
+    }
+
+    function getEmptyDTO(){
+        let dto = new Object();
+
+        dto.id = "";
+        dto.salutation = "";
+        dto.firstName = "";
+        dto.middleName = "";
+        dto.lastName = "";
+        dto.email = "";
+        dto.phone = "";
+        dto.mobile = "";
+        dto.permanentStatus = "";
+        dto.qualificationLevel = "";
+        dto.qualificationTitle = "";
+        dto.cnic = "";
+        dto.personalUrl = "";
+        dto.fieldOfStudy = "";
+        dto.dob = "";
+        dto.joinningDate = "";
+        return dto;
+    }
+
+</script>
+</html>

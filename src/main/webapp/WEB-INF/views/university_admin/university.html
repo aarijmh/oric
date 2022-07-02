@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iqra University -- University Administration</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/resources/static/css/adminlte/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/resources/static/css/adminlte/adminlte.min.css">
+</head>
+<body class="hold-transition layout-top-nav">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <div th:replace="/fragments/topnavbar :: nav"></div>
+    <!-- /.navbar -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0"> IQRA University ORIC</small></h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Layout</a></li>
+                            <li class="breadcrumb-item active">Top Navigation</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+    <div class="container-xl"  style="height: 500px">
+        <ul>
+
+            <li><a id="linkUniversity" href="#">University</a></li>
+            <li>Departments</li>
+            <li>Faculty</li>
+            <li><a id="linkUsers" href="#">Users</a></li>
+            <li><a id="linkOric" href="#">Oric</a></li>
+        </ul>
+    </div>
+    <!-- /.content-wrapper -->
+
+        <div id="dataModal" class="modal fade" role="dialog"
+             aria-labelledby="myExtraLargeModalLabel" aria-hidden="true"
+             data-keyboard="false">
+            <div class="modal-dialog modal-lg" >
+
+                <!-- Modal content-->
+                <div class="modal-content">
+
+                    <div class="modal-body  ui-front" id="modalBody">
+
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                        <input type="text" id="univName" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" id="univAddr" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input type="text" id="univPhone" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Sector</label>
+                                    <select type="text" id="univSector" class="form-control select2">
+                                        <option value="private">Private</option>
+                                        <option value="public">Public</option>
+                                        <option value="semiprivate">Semi-Private</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>VC</label>
+                                    <select type="text" id="univVC" class="form-control select2">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>VC PA</label>
+                                    <select type="text" id="univVCPA" class="form-control select2">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Registrar</label>
+                                    <select type="text" id="univRegistrar" class="form-control select2">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Registrar PA</label>
+                                    <select type="text" id="univRegistrarPA" class="form-control select2">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Vacant Posts</label>
+                                    <input type="number" id="univVacant" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Province</label>
+                                    <select type="text" id="univProvince" class="form-control select2">
+                                        <option value="sindh">Sindh</option>
+                                        <option value="punjab">Punjab</option>
+                                        <option value="balochistan">Balochistan</option>
+                                        <option value="kpk">Khyber Pakhtoon Khua</option>
+                                        <option value="gilgit">Gilgit</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger mr-auto"
+                                id="univSaveButton" >Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<input type="hidden" id="universityId">
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="float-right d-none d-sm-inline">
+            Anything you want
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 1998-2022 Iqra University.</strong> All rights reserved.
+    </footer>
+</div>
+</div>
+</body>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="/resources/static/js/jquery-3.6.0.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/resources/static/js/bootstrap.bundle.js"></script>
+<!-- AdminLTE App -->
+<script src="/resources/static/js/adminlte/adminlte.min.js"></script>
+<script src="/resources/static/js/sweetalert2.all.min.js"></script>
+<script src="/resources/static/js/util.js"></script>
+<script>
+
+    $(document).ready(function() {
+        initializeLinks();
+    });
+
+    function initializeLinks() {
+        $("#linkUsers").click(function () {
+            window.location.href = "/universityAdmin/showUsers"
+        });
+        $("#linkOric").click(function () {
+            window.location.href = "/universityAdmin/showOric"
+        });
+        $("#univSaveButton").click(function () {
+            let dto = makeDtoFromForm();
+            $.ajax({
+                type: "POST",
+                url: "/universityAdmin/saveUniversity",
+                data: JSON.stringify(dto),
+                // You are expected to receive the generated JSON (json_encode($data))
+                beforeSend: function () {
+
+                },
+                complete: function () {
+                },
+                contentType: "application/json",
+                success: function (data) {
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'University Data Updated'
+                    });
+                    $("#dataModal").modal('hide');
+                },
+                error: function (er) {
+
+                }
+            });
+        });
+
+        $("#linkUniversity").click(function(){
+
+            $.ajax({
+                type : "GET",
+                url : "/universityAdmin/getUniversity",
+                beforeSend : function(){
+
+                },
+                complete:function(){
+                },
+                success : function(university) {
+                    $.ajax({
+                        type : "GET",
+                        url : "/universityAdmin/getUsers",
+                        beforeSend : function(){
+
+                        },
+                        complete:function(){
+                        },
+                        success : function(users) {
+                            $('#univVC').empty();
+                            $('#univVCPA').empty();
+                            $('#univRegistrar').empty();
+                            $('#univRegistrarPA').empty();
+
+                            $.each(users,function(k,v){
+                                let option = "<option value='"+v.id+"'>"+v.name+"</option>";
+                                $('#univVC').append(option);
+                                $('#univVCPA').append(option);
+                                $("#univRegistrar").append(option);
+                                $("#univRegistrarPA").append(option);
+
+                            });
+                            populateFields(university);
+                            $("#dataModal").modal("show");
+                        },
+                        error : function(er) {
+
+                        }
+                    });
+                },
+                error : function(er) {
+
+                }
+            });
+        });
+    }
+
+    function populateFields(dto)
+    {
+        $("#universityId").val(dto.id );
+         $("#univName").val(dto.name );
+          $("#univAddr").val(dto.address);
+          $("#univPhone").val(dto.phone);
+         $("#univVacant").val(dto.vacantPosts );
+          $("#univSector").val(dto.sector);
+          $("#univProvince").val(dto.province);
+          $("#univVC").val(dto.vc);
+          $("#univVCPA").val(dto.vcPa);
+          $("#univRegistrar").val(dto.registrar);
+          $("#univRegistrarPA").val(dto.registrarPa);
+    }
+    function makeDtoFromForm(){
+        let dto = new Object();
+        dto.id = $("#universityId").val();
+        dto.name = $("#univName").val();
+        dto.address = $("#univAddr").val();
+        dto.phone = $("#univPhone").val();
+        dto.vacantPosts = $("#univVacant").val();
+        dto.sector = $("#univSector").val();
+        dto.province = $("#univProvince").val();
+        dto.vc = $("#univVC").val();
+        dto.vcPa = $("#univVCPA").val();
+        dto.registrar = $("#univRegistrar").val();
+        dto.registrarPa = $("#univRegistrarPA").val();
+
+        return dto;
+    }
+</script>
+</html>

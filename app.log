@@ -1,0 +1,90 @@
+2022-07-02 12:54:04,974 INFO pk.edu.iqra.oric.OricApplicationStarter [restartedMain] Starting OricApplicationStarter using Java 18.0.1 on LAPTOP-90SPLKL0 with PID 40104 (C:\Users\Lenovo\IdeaProjects\oric\target\classes started by Lenovo in C:\Users\Lenovo\IdeaProjects\oric)
+2022-07-02 12:54:04,983 INFO pk.edu.iqra.oric.OricApplicationStarter [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-07-02 12:54:05,021 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-07-02 12:54:05,021 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-07-02 12:54:05,876 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-02 12:54:06,017 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 134 ms. Found 25 JPA repository interfaces.
+2022-07-02 12:54:06,453 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-07-02 12:54:06,460 INFO org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2022-07-02 12:54:06,460 INFO org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-02 12:54:06,532 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-07-02 12:54:06,532 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1511 ms
+2022-07-02 12:54:06,706 INFO org.flywaydb.core.internal.license.VersionPrinter [restartedMain] Flyway Community Edition 8.5.11 by Redgate
+2022-07-02 12:54:06,706 INFO org.flywaydb.core.internal.license.VersionPrinter [restartedMain] See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#8.5.11
+2022-07-02 12:54:06,706 INFO org.flywaydb.core.internal.license.VersionPrinter [restartedMain] 
+2022-07-02 12:54:06,710 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-07-02 12:54:06,956 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-07-02 12:54:06,983 INFO org.flywaydb.core.internal.database.base.BaseDatabaseType [restartedMain] Database: jdbc:mysql://localhost:3306/oric (MySQL 8.0)
+2022-07-02 12:54:07,018 INFO org.flywaydb.core.internal.command.DbValidate [restartedMain] Successfully validated 1 migration (execution time 00:00.014s)
+2022-07-02 12:54:07,027 INFO org.flywaydb.core.internal.command.DbMigrate [restartedMain] Current version of schema `oric`: 1
+2022-07-02 12:54:07,027 INFO org.flywaydb.core.internal.command.DbMigrate [restartedMain] Schema `oric` is up to date. No migration necessary.
+2022-07-02 12:54:07,109 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-02 12:54:07,153 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-02 12:54:07,272 INFO org.hibernate.annotations.common.Version [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-02 12:54:07,359 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-07-02 12:54:08,304 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-02 12:54:08,310 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-02 12:54:09,054 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-02 12:54:09,199 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-07-02 12:54:09,229 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4372ec3a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@594a2bc9, org.springframework.security.web.context.SecurityContextPersistenceFilter@4ca51ce4, org.springframework.security.web.header.HeaderWriterFilter@74394dea, org.springframework.security.web.authentication.logout.LogoutFilter@558a46af, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3e88b74e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@67f67b33, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@ddaa28d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@45f8d795, org.springframework.security.web.session.SessionManagementFilter@2320f728, org.springframework.security.web.access.ExceptionTranslationFilter@346032f0, org.springframework.security.web.access.intercept.AuthorizationFilter@21f65577]
+2022-07-02 12:54:09,463 WARN org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-07-02 12:54:09,513 WARN org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] Unable to start LiveReload server
+2022-07-02 12:54:09,535 WARN org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2022-07-02 12:54:09,543 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [restartedMain] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-02 12:54:09,546 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Shutdown initiated...
+2022-07-02 12:54:09,564 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Shutdown completed.
+2022-07-02 12:54:09,567 INFO org.apache.catalina.core.StandardService [restartedMain] Stopping service [Tomcat]
+2022-07-02 12:54:09,585 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-07-02 12:54:09,601 ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter [restartedMain] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2022-07-02 12:54:25,214 INFO pk.edu.iqra.oric.OricApplicationStarter [restartedMain] Starting OricApplicationStarter using Java 18.0.1 on LAPTOP-90SPLKL0 with PID 580 (C:\Users\Lenovo\IdeaProjects\oric\target\classes started by Lenovo in C:\Users\Lenovo\IdeaProjects\oric)
+2022-07-02 12:54:25,215 INFO pk.edu.iqra.oric.OricApplicationStarter [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-07-02 12:54:25,259 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-07-02 12:54:25,259 INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-07-02 12:54:26,076 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-02 12:54:26,206 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 124 ms. Found 25 JPA repository interfaces.
+2022-07-02 12:54:26,616 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-07-02 12:54:26,622 INFO org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2022-07-02 12:54:26,622 INFO org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-02 12:54:26,694 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-07-02 12:54:26,694 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1434 ms
+2022-07-02 12:54:26,863 INFO org.flywaydb.core.internal.license.VersionPrinter [restartedMain] Flyway Community Edition 8.5.11 by Redgate
+2022-07-02 12:54:26,863 INFO org.flywaydb.core.internal.license.VersionPrinter [restartedMain] See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#8.5.11
+2022-07-02 12:54:26,863 INFO org.flywaydb.core.internal.license.VersionPrinter [restartedMain] 
+2022-07-02 12:54:26,868 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-07-02 12:54:27,061 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-07-02 12:54:27,085 INFO org.flywaydb.core.internal.database.base.BaseDatabaseType [restartedMain] Database: jdbc:mysql://localhost:3306/oric (MySQL 8.0)
+2022-07-02 12:54:27,113 INFO org.flywaydb.core.internal.command.DbValidate [restartedMain] Successfully validated 1 migration (execution time 00:00.011s)
+2022-07-02 12:54:27,124 INFO org.flywaydb.core.internal.command.DbMigrate [restartedMain] Current version of schema `oric`: 1
+2022-07-02 12:54:27,124 INFO org.flywaydb.core.internal.command.DbMigrate [restartedMain] Schema `oric` is up to date. No migration necessary.
+2022-07-02 12:54:27,215 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-02 12:54:27,250 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-02 12:54:27,358 INFO org.hibernate.annotations.common.Version [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-02 12:54:27,429 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-07-02 12:54:28,371 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-02 12:54:28,378 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-02 12:54:29,044 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-02 12:54:29,189 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-07-02 12:54:29,219 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@46e3cb36, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6e39218c, org.springframework.security.web.context.SecurityContextPersistenceFilter@6c3cfcda, org.springframework.security.web.header.HeaderWriterFilter@56fa86fc, org.springframework.security.web.authentication.logout.LogoutFilter@4fb59642, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4bc01fe7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3f63984, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@67825f33, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@d0eed8b, org.springframework.security.web.session.SessionManagementFilter@1ecf6c43, org.springframework.security.web.access.ExceptionTranslationFilter@1062eba5, org.springframework.security.web.access.intercept.AuthorizationFilter@331a43bf]
+2022-07-02 12:54:29,458 WARN org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-07-02 12:54:29,510 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-07-02 12:54:29,546 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-07-02 12:54:29,562 INFO pk.edu.iqra.oric.OricApplicationStarter [restartedMain] Started OricApplicationStarter in 4.727 seconds (JVM running for 5.776)
+2022-07-02 12:54:29,872 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [RMI TCP Connection(2)-10.9.0.29] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-02 12:54:29,872 INFO org.springframework.web.servlet.DispatcherServlet [RMI TCP Connection(2)-10.9.0.29] Initializing Servlet 'dispatcherServlet'
+2022-07-02 12:54:29,874 INFO org.springframework.web.servlet.DispatcherServlet [RMI TCP Connection(2)-10.9.0.29] Completed initialization in 2 ms
+2022-07-02 13:11:10,979 WARN org.springframework.web.servlet.PageNotFound [http-nio-8080-exec-3] No mapping for GET /favicon.ico
