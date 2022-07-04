@@ -2,6 +2,9 @@ package pk.edu.iqra.oric.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.util.Pair;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pk.edu.iqra.oric.domain.Role;
 import pk.edu.iqra.oric.domain.User;
@@ -11,6 +14,7 @@ import pk.edu.iqra.oric.service.UserService;
 import pk.edu.iqra.oric.utility.UserUtility;
 
 import javax.transaction.Transactional;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,9 +56,12 @@ public class UserServiceImpl  implements UserService {
     @Override
     public UserDTO saveUser(UserDTO userDTO, Integer administratorId) {
         User user = null;
-        if(userDTO.getId() == null){
+        if(userDTO.getId() == null || userDTO.getId().equals(0)){
             user = new User();
             user.setUniversity(userRepository.findUniversityOfAdministrator(administratorId));
+            BCryptPasswordEncoder bCryptPasswordEncoder =
+                    new BCryptPasswordEncoder(10, new SecureRandom());
+            user.setPassword("{bcrypt}"+bCryptPasswordEncoder.encode("password"));
         }
         else {
             user = userRepository.findById(userDTO.getId()).get();
@@ -95,5 +102,20 @@ public class UserServiceImpl  implements UserService {
     @Override
     public User getUserByUserId(Integer id) {
         return userRepository.findById(id).get();
+    }
+
+    @Override
+    public Integer []  getUniversityAndCampusIdOfUser(Integer userId) {
+
+        Object  i = userRepository.getCampusAndUniversityIdOfUser(userId);
+        Integer [] ids = new Integer[2];
+        if( i != null){
+            Object [] o = (Object[])i;
+            ids[0] = (Integer) o[0];
+            ids[1] = (Integer) o[1];
+            return ids;
+        }
+
+        return ids;
     }
 }

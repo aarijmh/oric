@@ -16,6 +16,7 @@ import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+import pk.edu.iqra.oric.interceptors.CampusAdminInterceptor;
 import pk.edu.iqra.oric.interceptors.OricInterceptor;
 
 @EnableWebMvc
@@ -69,10 +70,15 @@ public class WebConfigurer implements WebMvcConfigurer {
 		return new OricInterceptor();
 	}
 
+	@Bean
+	public CampusAdminInterceptor campusAdminInterceptor() {
+		return new CampusAdminInterceptor();
+	}
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(oricInterceptor()).addPathPatterns("/oricAdmin/**");
-
+		registry.addInterceptor(campusAdminInterceptor()).addPathPatterns("/campusAdmin/**");
 	}
 	@Bean(name = "multipartResolver")
 	public CommonsMultipartResolver getResolver() {

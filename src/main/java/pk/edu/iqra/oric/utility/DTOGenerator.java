@@ -386,9 +386,9 @@ public class DTOGenerator {
 
     public static void main(String[] ar) {
         try {
-            String dtoName = "AnnouncementDTO";
+            String dtoName = "FacultyDTO";
             String dtoPackage = "pk.edu.iqra.oric.dto";
-            String className = "Announcement";
+            String className = "Faculty";
             String classPackage = "pk.edu.iqra.oric.domain";
             String outputFolder = "d:\\outputOric\\";
 

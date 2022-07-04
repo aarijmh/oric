@@ -17,7 +17,7 @@ public class UserUtility {
         user.setSalutation(userDTO.getSalutation());
         user.setMobile(userDTO.getMobile());
         user.setPhone(userDTO.getPhone());
-        user.setPassword(userDTO.getPassword());
+//        user.setPassword(userDTO.getPassword());
         user.setDob(UtilityFunctions.stringToLocalDate(userDTO.getDob()));
         user.setJoinningDate(UtilityFunctions.stringToLocalDate(userDTO.getJoinningDate()));
 

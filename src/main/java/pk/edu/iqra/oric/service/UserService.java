@@ -1,5 +1,6 @@
 package pk.edu.iqra.oric.service;
 
+import org.springframework.data.util.Pair;
 import pk.edu.iqra.oric.domain.Role;
 import pk.edu.iqra.oric.domain.User;
 import pk.edu.iqra.oric.dto.UserDTO;
@@ -19,4 +20,6 @@ public interface UserService {
     List<User> getAllUsersOfList(List<Integer> users);
 
     User getUserByUserId(Integer id);
+
+    Integer[] getUniversityAndCampusIdOfUser(Integer userId);
 }

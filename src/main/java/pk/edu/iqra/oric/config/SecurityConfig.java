@@ -63,7 +63,8 @@ public class SecurityConfig {
 
                                         .mvcMatchers("/universityAdmin/**").hasAnyRole("UNIVERSITY_ADMIN")
                                         .mvcMatchers("/oricAdmin/**").hasAnyRole("UNIVERSITY_ADMIN")
-                                        .mvcMatchers("/data/**").hasAnyRole("UNIVERSITY_ADMIN")
+                                        .mvcMatchers("/campusAdmin/**").hasAnyRole("UNIVERSITY_ADMIN","CAMPUS_ADMIN")
+                                        .mvcMatchers("/data/**").hasAnyRole("UNIVERSITY_ADMIN","CAMPUS_ADMIN")
                                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                         .antMatchers("/**").permitAll()
                                         .anyRequest().authenticated().

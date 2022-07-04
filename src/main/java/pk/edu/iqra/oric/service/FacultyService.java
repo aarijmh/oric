@@ -8,13 +8,18 @@ import pk.edu.iqra.oric.dto.FacultyDTO;
 import java.util.List;
 
 public interface FacultyService {
-    @Query("from Faculty f left join fetch f.campus campus where f.id = ?1")
-    Faculty getFacultyById(Integer facultyId);
+
+    public Faculty getFacultyById(Integer facultyId);
+
     Campus getCampusOfFaculty(Integer facultyId);
     
     List<Faculty> getFacultiesOfAdministrator(Integer adminId);
     
     List<FacultyDTO> getFacultiesDTOOfAdministrator(Integer adminId);
 
-    // TODO: 6/13/2022 getFaculties for Campus Id
+    FacultyDTO saveFaculty(FacultyDTO facultyDTO, Integer campusId);
+
+    List<Faculty> getFacultiesOfCampus(Integer campusId);
+
+    List<FacultyDTO> getFacultiesDTOOfCampus(Integer campusI);
 }

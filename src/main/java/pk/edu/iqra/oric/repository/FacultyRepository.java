@@ -18,5 +18,9 @@ public interface FacultyRepository extends CrudRepository<Faculty,Integer> {
             " where campus.university.id = (select u.university.id from User u where  u.id = ?1)")
     List<Faculty> findFacultiesOfUniversityAdmin(Integer administratorId);
 
-    // TODO: 6/13/2022 Add a method for faculty retrieval for campus directors
+    @Query("from Faculty f where f.campus.id = ?1")
+    List<Faculty> findFacultiesByCampus(Integer campusId);
+
+    @Query("from Faculty f left join fetch f.campus campus where f.id = ?1")
+    Faculty getFacultyById(Integer facultyId);
 }

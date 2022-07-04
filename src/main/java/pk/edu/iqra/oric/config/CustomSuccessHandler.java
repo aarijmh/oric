@@ -49,7 +49,10 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
         }
         else if (isORICAdmin(roles)) {
             url = "/oricAdmin";
-        } else {
+        } else if(isCAMPUSAdmin(roles)){
+            url = "/campusAdmin";
+        }
+            else {
             url="/accessDenied";
         }
  
@@ -66,6 +69,13 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
     
     private boolean isORICAdmin(List<String> roles) {
         if (roles.contains("ROLE_UNIVERSITY_ADMIN")) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isCAMPUSAdmin(List<String> roles) {
+        if (roles.contains("ROLE_CAMPUS_ADMIN")) {
             return true;
         }
         return false;
