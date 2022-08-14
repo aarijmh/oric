@@ -10,4 +10,7 @@ import java.util.List;
 public interface ResearchRepository extends CrudRepository<Research,Integer> {
     @Query("from Research rl where rl.oricSession.id = ?1")
     List<Research> findOfOricSession(Integer oricSessionId);
+
+    @Query("from Research rl where rl.faculty.campus.id = ?1")
+    List<Research> findOfCampus(Integer campusId);
 }

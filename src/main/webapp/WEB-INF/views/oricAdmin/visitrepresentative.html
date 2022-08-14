@@ -376,7 +376,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     function processFaculty(users){
         let l = [];
         l.push("facultyId");
-        let facName = (fac) => fac.facultyShortName + " - "+fac.campusName;
+        let facName = (fac) => fac.shortName + " - "+fac.campusName;
         populateListUsers(l,users,true,facName);
     }
 

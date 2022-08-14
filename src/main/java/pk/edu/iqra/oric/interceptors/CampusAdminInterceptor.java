@@ -3,15 +3,11 @@ package pk.edu.iqra.oric.interceptors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.servlet.HandlerInterceptor;
-import pk.edu.iqra.oric.exception.RequestDeniedException;
-import pk.edu.iqra.oric.service.OricService;
 import pk.edu.iqra.oric.service.UserService;
 import pk.edu.iqra.oric.utility.CustomUserDetails;
-import pk.edu.iqra.oric.utility.UtilityFunctions;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.security.Principal;
 
 public class CampusAdminInterceptor implements HandlerInterceptor {
 

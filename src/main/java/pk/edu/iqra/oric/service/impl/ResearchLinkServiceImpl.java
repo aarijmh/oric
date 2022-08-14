@@ -15,6 +15,7 @@ import pk.edu.iqra.oric.repository.ResearchLinkRepository;
 import pk.edu.iqra.oric.service.FacultyService;
 import pk.edu.iqra.oric.service.ResearchLinkService;
 import pk.edu.iqra.oric.service.UserService;
+import pk.edu.iqra.oric.utility.Constants;
 import pk.edu.iqra.oric.utility.UserUtility;
 
 import java.time.Instant;
@@ -46,7 +47,7 @@ public class ResearchLinkServiceImpl implements ResearchLinkService {
 
     @Override
     public List<ResearchLink> getResource(Integer oricSessionId) {
-        return researchLinkRepository.findResearchLinksOfOricSession(oricSessionId);
+        return researchLinkRepository.findOfOricSession(oricSessionId);
     }
 
     @Override
@@ -103,5 +104,19 @@ public class ResearchLinkServiceImpl implements ResearchLinkService {
         dto.setId(researchLinkRepository.save(classObject).getId());
 
         return dto;
+    }
+
+    @Override
+    public List<ResearchLinkDTO> getResourceDTO(List<ResearchLink> classObjectList){
+        return classObjectList.stream().map(x->new ResearchLinkDTO(x)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ResearchLink> getResourceForRole(Integer oricSessionId, Integer campusId, String role){
+        if(role.equalsIgnoreCase(Constants.UNIVERSITY_ADMINISTRATOR_ROLE.toLowerCase())){
+            return researchLinkRepository.findOfOricSession(oricSessionId);
+        }
+
+        return researchLinkRepository.findOfCampus(campusId);
     }
 }

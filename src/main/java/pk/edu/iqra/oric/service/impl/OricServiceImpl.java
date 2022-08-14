@@ -50,7 +50,13 @@ public class OricServiceImpl implements OricService {
         return oricSessionRepository.findOricSessionsOfUniversity(university.getId()).stream().map(x->new OricSessionDTO(x)).collect(Collectors.toList());
 
     }
-@Transactional(rollbackOn = Exception.class)
+
+    @Override
+    public List<OricSessionDTO> getOpenSessionsOfOricOfUniversity(Integer universityId) {
+        return oricSessionRepository.findOpenOricSessionsOfUniversity(universityId).stream().map(x->new OricSessionDTO(x)).collect(Collectors.toList());
+    }
+
+    @Transactional(rollbackOn = Exception.class)
     @Override
     public OricSessionDTO saveOricSession(OricSessionDTO oricSessionDTO, Integer administrator) {
         OricSession oricSession = null;

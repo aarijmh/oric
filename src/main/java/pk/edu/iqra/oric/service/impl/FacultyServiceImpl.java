@@ -61,6 +61,16 @@ public class FacultyServiceImpl implements FacultyService {
     }
 
     @Override
+    public List<Faculty> getFacultiesOfCampusAdministrator(Integer adminId) {
+        return facultyRepository.findFacultyOfCampusAdmin(adminId);
+    }
+
+    @Override
+    public List<FacultyDTO> getFacultiesDTOOfCampusAdministrator(Integer adminId) {
+        return getFacultiesOfCampusAdministrator(adminId).stream().map(x->new FacultyDTO(x)).collect(Collectors.toList());
+    }
+
+    @Override
     public FacultyDTO saveFaculty(FacultyDTO facultyDTO, Integer campusId){
 
         Faculty faculty = null;

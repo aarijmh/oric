@@ -13,4 +13,8 @@ public interface ResearchContractRepository extends CrudRepository<ResearchContr
 
     @Query("from ResearchContract rl where rl.oricSession.id = ?1")
     List<ResearchContract> findOfOricSession(Integer oricSessionId);
+
+
+    @Query("from ResearchContract rl where rl.faculty.campus.id = ?1")
+    List<ResearchContract> findOfCampus(Integer campusId);
 }

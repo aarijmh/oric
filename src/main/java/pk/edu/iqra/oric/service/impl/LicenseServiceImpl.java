@@ -13,6 +13,7 @@ import pk.edu.iqra.oric.repository.LicenseRepository;
 import pk.edu.iqra.oric.service.FacultyService;
 import pk.edu.iqra.oric.service.LicenseService;
 import pk.edu.iqra.oric.service.UserService;
+import pk.edu.iqra.oric.utility.Constants;
 import pk.edu.iqra.oric.utility.UserUtility;
 
 import java.time.Instant;
@@ -107,5 +108,17 @@ public class LicenseServiceImpl implements LicenseService {
         return dto;
     }
 
+    @Override
+    public List<LicenseDTO> getResourceDTO(List<License> classObjectList){
+        return classObjectList.stream().map(x->new LicenseDTO(x)).collect(Collectors.toList());
+    }
 
+    @Override
+    public List<License> getResourceForRole(Integer oricSessionId, Integer campusId, String role){
+        if(role.equalsIgnoreCase(Constants.UNIVERSITY_ADMINISTRATOR_ROLE.toLowerCase())){
+            return repository.findOfOricSession(oricSessionId);
+        }
+
+        return repository.findOfCampus(campusId);
+    }
 }

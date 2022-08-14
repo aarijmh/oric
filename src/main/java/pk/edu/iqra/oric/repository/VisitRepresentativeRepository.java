@@ -13,4 +13,7 @@ public interface VisitRepresentativeRepository extends CrudRepository<VisitRepre
 
     @Query("from VisitRepresentative rl where rl.oricSession.id = ?1")
     List<VisitRepresentative> findOfOricSession(Integer oricSessionId);
+
+    @Query("from VisitRepresentative rl where rl.faculty.campus.id = ?1")
+    List<VisitRepresentative> findOfCampus(Integer campusId);
 }

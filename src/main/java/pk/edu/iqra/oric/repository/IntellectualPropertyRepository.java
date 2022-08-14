@@ -13,4 +13,8 @@ public interface IntellectualPropertyRepository extends CrudRepository<Intellect
 
     @Query("from IntellectualProperty rl where rl.oricSession.id = ?1")
     List<IntellectualProperty> findOfOricSession(Integer oricSessionId);
+
+
+    @Query("from IntellectualProperty rl where rl.faculty.campus.id = ?1")
+    List<IntellectualProperty> findOfCampus(Integer campusId);
 }

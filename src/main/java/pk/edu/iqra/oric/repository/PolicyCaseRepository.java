@@ -11,5 +11,8 @@ import java.util.List;
 public interface PolicyCaseRepository extends CrudRepository<PolicyCase,Integer> {
 
     @Query("from PolicyCase pc where pc.oricSession.id = ?1")
-    List<PolicyCase> findPoliciesOfOricSession(Integer oricsessionId);
+    List<PolicyCase> findOfOricSession(Integer oricsessionId);
+
+    @Query("from PolicyCase rl where rl.faculty.campus.id = ?1")
+    List<PolicyCase> findOfCampus(Integer campusId);
 }

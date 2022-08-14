@@ -13,6 +13,7 @@ import pk.edu.iqra.oric.repository.IntellectualPropertyRepository;
 import pk.edu.iqra.oric.service.FacultyService;
 import pk.edu.iqra.oric.service.IntellectualPropertyService;
 import pk.edu.iqra.oric.service.UserService;
+import pk.edu.iqra.oric.utility.Constants;
 import pk.edu.iqra.oric.utility.UserUtility;
 
 import java.time.Instant;
@@ -109,5 +110,18 @@ public class IntellectualPropertyServiceImpl implements IntellectualPropertyServ
         return dto;
     }
 
+    @Override
+    public List<IntellectualPropertyDTO> getResourceDTO(List<IntellectualProperty> classObjectList){
+        return classObjectList.stream().map(x->new IntellectualPropertyDTO(x)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<IntellectualProperty> getResourceForRole(Integer oricSessionId, Integer campusId, String role){
+        if(role.equalsIgnoreCase(Constants.UNIVERSITY_ADMINISTRATOR_ROLE.toLowerCase())){
+            return repository.findOfOricSession(oricSessionId);
+        }
+
+        return repository.findOfCampus(campusId);
+    }
 
 }

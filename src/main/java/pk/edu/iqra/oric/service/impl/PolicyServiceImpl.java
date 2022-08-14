@@ -14,6 +14,7 @@ import pk.edu.iqra.oric.repository.ResearchContractRepository;
 import pk.edu.iqra.oric.service.FacultyService;
 import pk.edu.iqra.oric.service.PolicyService;
 import pk.edu.iqra.oric.service.UserService;
+import pk.edu.iqra.oric.utility.Constants;
 import pk.edu.iqra.oric.utility.UserUtility;
 
 import java.time.Instant;
@@ -45,7 +46,7 @@ public class PolicyServiceImpl implements PolicyService {
 
     @Override
     public List<PolicyCase> getResource(Integer oricSessionId) {
-        return repository.findPoliciesOfOricSession(oricSessionId);
+        return repository.findOfOricSession(oricSessionId);
     }
 
     @Override
@@ -117,4 +118,19 @@ public class PolicyServiceImpl implements PolicyService {
 
         return dto;
     }
+
+    @Override
+    public List<PolicyCaseDTO> getResourceDTO(List<PolicyCase> classObjectList){
+        return classObjectList.stream().map(x->new PolicyCaseDTO(x)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PolicyCase> getResourceForRole(Integer oricSessionId, Integer campusId, String role){
+        if(role.equalsIgnoreCase(Constants.UNIVERSITY_ADMINISTRATOR_ROLE.toLowerCase())){
+            return repository.findOfOricSession(oricSessionId);
+        }
+
+        return repository.findOfCampus(campusId);
+    }
+
 }

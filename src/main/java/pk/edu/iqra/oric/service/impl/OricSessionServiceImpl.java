@@ -213,7 +213,7 @@ public class OricSessionServiceImpl implements OricSessionService {
      */
     @Override
     public List<PolicyCase> getPolicies(Integer oricSessionId) {
-        return policyCaseRepository.findPoliciesOfOricSession(oricSessionId);
+        return policyCaseRepository.findOfOricSession(oricSessionId);
     }
 
     @Override

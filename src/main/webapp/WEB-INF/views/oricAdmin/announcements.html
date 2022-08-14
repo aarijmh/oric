@@ -142,6 +142,82 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
                             </div>
 
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>facultyId</label>
+
+                                    <select id='facultyId' class='form-control select2' style='width: 100%;'>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>Expiring Date</label>
+
+                                    <input  id='expiryDate' class='form-control dateInput' >
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+
+                                    <label>Expiry Time</label>
+
+                                    <select class="form-control" id="expiryTime">
+                                        <option value="00:00">Midnight</option>
+                                        <option value="00:30">00:30</option>
+                                        <option value="01:00">01:00</option>
+                                        <option value="01:30">01:30</option>
+                                        <option value="02:00">02:00</option>
+                                        <option value="02:30">02:30</option>
+                                        <option value="03:00">03:00</option>
+                                        <option value="03:30">03:30</option>
+                                        <option value="04:00">04:00</option>
+                                        <option value="04:30">04:30</option>
+                                        <option value="05:00">05:00</option>
+                                        <option value="05:30">05:30</option>
+                                        <option value="06:00">06:00</option>
+                                        <option value="06:30">06:30</option>
+                                        <option value="07:00">07:00</option>
+                                        <option value="07:30">07:30</option>
+                                        <option value="08:00">08:00</option>
+                                        <option value="08:30">08:30</option>
+                                        <option value="09:00">09:00</option>
+                                        <option value="09:30">09:30</option>
+                                        <option value="10:00">10:00</option>
+                                        <option value="10:30">10:30</option>
+                                        <option value="11:00">11:00</option>
+                                        <option value="11:30">11:30</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="12:30">12:30</option>
+                                        <option value="13:00">13:00</option>
+                                        <option value="13:30">13:30</option>
+                                        <option value="14:00">14:00</option>
+                                        <option value="14:30">14:30</option>
+                                        <option value="15:00">15:00</option>
+                                        <option value="15:30">15:30</option>
+                                        <option value="16:00">16:00</option>
+                                        <option value="16:30">16:30</option>
+                                        <option value="17:00">17:00</option>
+                                        <option value="17:30">17:30</option>
+                                        <option value="18:00">18:00</option>
+                                        <option value="18:30">18:30</option>
+                                        <option value="19:00">19:00</option>
+                                        <option value="19:30">19:30</option>
+                                        <option value="20:00">20:00</option>
+                                        <option value="20:30">20:30</option>
+                                        <option value="21:00">21:00</option>
+                                        <option value="21:30">21:30</option>
+                                        <option value="22:00">22:00</option>
+                                        <option value="22:30">22:30</option>
+                                        <option value="23:00">23:00</option>
+                                        <option value="23:30">23:30</option>
+                                        <option value="23:59">End of Day</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -257,7 +333,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $('#dataModal').on('shown.bs.modal', function () {
             $('.dateInput').datepicker({
 
-                dateFormat: "dd/MM/yyyy",
+                format: "dd/mm/yyyy",
                 todayBtn: true,
                 todayHighlight: true,
                 container: '#modalBody'
@@ -344,6 +420,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
             title: "Amount"
         },
         {
+            field: 'facultyName',
+            width: '90',
+            title:'Faculty'
+        },
+        {
+            field: 'campusName',
+            width: '90',
+            title:'Campus'
+        },
+        {
+            field: 'expiryDate',
+            width: '90',
+            title:'Expiring Date'
+        },
+        {
+            field: 'expiryTime',
+            width: '90',
+            title:'Expiring Time'
+        },
+        {
             field: 'actions',
             width: '50',
             title: 'Actions',
@@ -383,7 +479,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     function fetchRemoteData() {
         // fetchRemoteUsers(processUser);
-        fetchRemoteDataGeneric("/data/getAnnouncementTypes", processFaculty);
+        fetchRemoteDataGeneric("/data/getAnnouncementTypes", processAnnouncements);
+        fetchRemoteDataGeneric("/data/getFaculties",processFaculty);
 
     }
 
@@ -394,7 +491,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
         populateListUsers(l, users, false, facName);
     }
 
-    function processFaculty(users) {
+    function processFaculty(users){
+        let l = [];
+        l.push("facultyId");
+        let facName = (fac) => fac.shortName + " - "+fac.campusName;
+        populateListUsers(l,users,true,facName);
+    }
+
+    function processAnnouncements(users) {
         let l = [];
         l.push("announcementTypeId");
         let facName = (fac) => fac.name;
@@ -483,7 +587,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         obj.url = '';
         obj.longDescription = '';
         obj.amount = '';
-
+        obj.facultyId = 0;
+        obj.expiryDate = '';
+        obj.expiryTime = '00:00';
         return obj;
     }
 
@@ -493,14 +599,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
         if (dto != null && typeof dto !== 'undefined')
             obj = dto;
         obj.id = $("#researchId").val();
-
+        obj.facultyId = $('#facultyId').val();
         obj.announcementTypeId = $('#announcementTypeId').val();
         obj.title = $('#title').val();
         obj.shortDescription = $('#shortDescription').val();
         obj.url = $('#url').val();
         obj.longDescription = $('#longDescription').val();
         obj.amount = $('#amount').val();
-
+        obj.expiryDate = $('#expiryDate').val();
+        obj.expiryTime = $('#expiryTime').val();
         return obj;
     }
 
@@ -513,6 +620,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             obj = userDTO;
         }
         assignIfNotEmpty(userDTO, 'announcementTypeId');
+        assignIfNotEmpty(userDTO, 'facultyId');
+
         $('#title').val(obj.title);
         $('#shortDescription').val(obj.shortDescription);
         $('#url').val(obj.url);
@@ -521,7 +630,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         $("#fileListBody").empty();
         $("#fileBtn").val(null);
-
+        $('#expiryDate').val(obj.expiryDate);
+        $('#expiryTime').val(obj.expiryTime);
 
     }
 

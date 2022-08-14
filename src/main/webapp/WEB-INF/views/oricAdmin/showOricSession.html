@@ -3,7 +3,7 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,11 +53,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Main content -->
         <div class="container-xl">
-            <div class="row mb-2">
-                <div class="col-md-6">
-                    <button id="addUser" class="btn-primary">Add</button>
-                </div>
-            </div>
             <div class="row justify-content-left"
                  style="margin-left: 10px; margin-top: 5px">
                 <input type="hidden" th:value="${oricSessionId}" id="oricSessionId">
@@ -65,7 +60,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
     <ul class="list-group">
-        <li class="list-group-item"><a id="positions" href="#">Positions</a></li>
+        <li class="list-group-item" sec:authorize="hasRole('UNIVERSITY_ADMIN')"><a id="positions" href="#">Positions</a></li>
         <li class="list-group-item"><a id="oricSessionHECResearch" href="#">Research proposals submitted for funding by HEC</a></li>
         <li class="list-group-item"><a id="oricSessionNoNHECResearch" href="#">Research Proposals Submitted for Funding (from non HEC source - National or International)</a></li>
         <li class="list-group-item"><a id="jointNoNHECResearch" href="#">Joint Research Projects Submitted (National / International Funding Agencies)</a></li>
@@ -73,14 +68,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <li class="list-group-item"><a id="researchLink" href="#">Research Links established with other HEIs / Corporate Sector / Industry / Community (National / International)</a></li>
         <li class="list-group-item"><a id="researchContract" href="#">Contract Research Awarded by Industry or Government Organizations (National / International)</a></li>
         <li class="list-group-item"><a id="consultancyContract" href="#"> Consultancy Contracts Executed through ORIC with Industry, Commerce or Government</a></li>
-        <li class="list-group-item"><a id="oricReport" href="#"> Oric Reports</a></li>
+        <li class="list-group-item"  sec:authorize="hasRole('UNIVERSITY_ADMIN')"><a id="oricReport" href="#"> Oric Reports</a></li>
         <li class="list-group-item"><a id="intellectualProperty" href="#"> Intellectual Property</a></li>
         <li class="list-group-item"><a id="license" href="#"> Licenses</a></li>
         <li class="list-group-item"><a id="creativeProduct" href="#"> Science / Arts Products or Any Creative Activity Performed / Displayed at National or International Level</a></li>
         <li class="list-group-item"><a id="award" href="#">National or International Honors or Awards Won (in Research Excellence, Innovation & Commercialization) </a></li>
         <li class="list-group-item"><a id="agreementCollaborative" href="#"> Agreements Signed for Collaboration with Industry, Government or Community (at National / International Level) </a></li>
         <li class="list-group-item"><a id="visitRepresentative" href="#"> Number of Visits by Representatives of Industry or Community Members Regarding Potential Research Subjects</a></li>
-        <li class="list-group-item"><a id="trainings" href="#"> Trainings</a></li>
+        <li class="list-group-item" sec:authorize="hasRole('UNIVERSITY_ADMIN')"><a id="trainings" href="#" > Trainings</a></li>
         <li class="list-group-item"><a id="announcements" href="#"> Announcements</a></li>
 
 </ul>

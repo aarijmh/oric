@@ -13,4 +13,7 @@ public interface AnnouncementRepository extends CrudRepository<Announcement,Inte
 
     @Query("from Announcement rl where rl.oricSession.id = ?1")
     List<Announcement> findOfOricSession(Integer oricSessionId);
+
+    @Query("from Announcement rl where rl.faculty.campus.id = ?1")
+    List<Announcement> findOfCampus(Integer campusId);
 }

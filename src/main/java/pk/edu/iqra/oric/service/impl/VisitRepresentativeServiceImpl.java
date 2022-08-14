@@ -13,6 +13,7 @@ import pk.edu.iqra.oric.repository.VisitRepresentativeRepository;
 import pk.edu.iqra.oric.service.FacultyService;
 import pk.edu.iqra.oric.service.VisitRepresentativeService;
 import pk.edu.iqra.oric.service.UserService;
+import pk.edu.iqra.oric.utility.Constants;
 import pk.edu.iqra.oric.utility.UserUtility;
 
 import java.time.Instant;
@@ -96,5 +97,17 @@ public class VisitRepresentativeServiceImpl implements VisitRepresentativeServic
         return dto;
     }
 
+    @Override
+    public List<VisitRepresentativeDTO> getResourceDTO(List<VisitRepresentative> classObjectList){
+        return classObjectList.stream().map(x->new VisitRepresentativeDTO(x)).collect(Collectors.toList());
+    }
 
+    @Override
+    public List<VisitRepresentative> getResourceForRole(Integer oricSessionId, Integer campusId, String role){
+        if(role.equalsIgnoreCase(Constants.UNIVERSITY_ADMINISTRATOR_ROLE.toLowerCase())){
+            return repository.findOfOricSession(oricSessionId);
+        }
+
+        return repository.findOfCampus(campusId);
+    }
 }

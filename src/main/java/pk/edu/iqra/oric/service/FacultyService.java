@@ -22,4 +22,8 @@ public interface FacultyService {
     List<Faculty> getFacultiesOfCampus(Integer campusId);
 
     List<FacultyDTO> getFacultiesDTOOfCampus(Integer campusI);
+
+    List<Faculty> getFacultiesOfCampusAdministrator(Integer adminId);
+
+    List<FacultyDTO> getFacultiesDTOOfCampusAdministrator(Integer adminId);
 }

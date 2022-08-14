@@ -15,6 +15,7 @@ import pk.edu.iqra.oric.utility.NavigationStore;
 import pk.edu.iqra.oric.utility.NavigationUtility;
 import pk.edu.iqra.oric.utility.UtilityFunctions;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.List;
 
@@ -142,9 +143,12 @@ public class OricAdminController {
     @GetMapping("/oricSession/{oricSessionId}/getResource/{resourceType}")
     @ResponseBody
     public List<? extends DtoInterface> getResources(@PathVariable("oricSessionId") Integer oricSessionId,
-                                           @PathVariable("resourceType") String resourceType
+                                           @PathVariable("resourceType") String resourceType,
+                                                     HttpServletRequest request
     ){
-        return serviceFactory.getService(resourceType.toLowerCase()).getResourceDTO(oricSessionId);
+        Integer campusId = (Integer)request.getSession().getAttribute("campus_id");
+        String role = (String)request.getSession().getAttribute("role");
+        return serviceFactory.getService(resourceType.toLowerCase()).getResourceDTOForRole(oricSessionId,campusId,role);
     }
 
     @PostMapping("/oricSession/{oricSessionId}/saveResource/{resourceType}")

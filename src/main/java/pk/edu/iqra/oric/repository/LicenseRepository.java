@@ -13,4 +13,8 @@ public interface LicenseRepository extends CrudRepository<License,Integer> {
 
     @Query("from License rl where rl.oricSession.id = ?1")
     List<License> findOfOricSession(Integer oricSessionId);
+
+
+    @Query("from License rl where rl.faculty.campus.id = ?1")
+    List<License> findOfCampus(Integer campusId);
 }

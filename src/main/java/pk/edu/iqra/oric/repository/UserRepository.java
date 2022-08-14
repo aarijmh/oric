@@ -29,4 +29,7 @@ public interface UserRepository extends CrudRepository<User,Integer> {
 
     @Query("select c.id, c.director.university.id from Campus c where c.director.id = ?1")
     Object getCampusAndUniversityIdOfUser(Integer id);
+
+    @Query("select cu.user from CampusUser cu where cu.campus.id = ?1 and cu.user.isDeleted = false ")
+    List<User> findAllUsersOfCampus(Integer campusId);
 }

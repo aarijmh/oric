@@ -11,4 +11,8 @@ public interface ConsultancyContractRepository extends CrudRepository<Consultanc
 
     @Query("from ConsultancyContract rl where rl.oricSession.id = ?1")
     List<ConsultancyContract> findOfOricSession(Integer oricSessionId);
+
+
+    @Query("from ConsultancyContract rl where rl.faculty.campus.id = ?1")
+    List<ConsultancyContract> findOfCampus(Integer campusId);
 }

@@ -14,6 +14,9 @@ public interface OricSessionRepository extends CrudRepository<OricSession,Intege
     @Query("from OricSession os where os.university.id = ?1")
     List<OricSession> findOricSessionsOfUniversity(Integer university);
 
+    @Query("from OricSession os where os.university.id = ?1 and os.isClosed = false ")
+    List<OricSession> findOpenOricSessionsOfUniversity(Integer university);
+
     @Query("from Research rph " +
             " left join fetch rph.coInvestigator1 ci1 " +
             " left join fetch rph.coInvestigator2 ci2 " +

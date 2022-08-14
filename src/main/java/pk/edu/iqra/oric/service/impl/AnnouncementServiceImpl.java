@@ -14,6 +14,7 @@ import pk.edu.iqra.oric.repository.AnnouncementRepository;
 import pk.edu.iqra.oric.service.FacultyService;
 import pk.edu.iqra.oric.service.AnnouncementService;
 import pk.edu.iqra.oric.service.UserService;
+import pk.edu.iqra.oric.utility.Constants;
 import pk.edu.iqra.oric.utility.UserUtility;
 
 import java.time.Instant;
@@ -83,6 +84,13 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         classObject.setModifiedBy(creator);
         classObject.setModifiedOn(Instant.now());
 
+        if(dto.getFacultyId() != null){
+            classObject.setFaculty(facultyService.getFacultyById(dto.getFacultyId()));
+            dto.setFacultyName(classObject.getFaculty().getName());
+            dto.setCampusName(classObject.getFaculty().getCampus().getName());
+        }
+
+
         classObject.setAnnouncementType(announcementTypeRepository.findById(dto.getAnnouncementTypeId()).get());
         dto.setAnnouncementTypeName(classObject.getAnnouncementType().getName());
 
@@ -92,5 +100,17 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         return dto;
     }
 
+    @Override
+    public List<AnnouncementDTO> getResourceDTO(List<Announcement> classObjectList){
+        return classObjectList.stream().map(x->new AnnouncementDTO(x)).collect(Collectors.toList());
+    }
 
+    @Override
+    public List<Announcement> getResourceForRole(Integer oricSessionId, Integer campusId, String role){
+        if(role.equalsIgnoreCase(Constants.UNIVERSITY_ADMINISTRATOR_ROLE.toLowerCase())){
+            return repository.findOfOricSession(oricSessionId);
+        }
+
+        return repository.findOfCampus(campusId);
+    }
 }

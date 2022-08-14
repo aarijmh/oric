@@ -93,10 +93,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     function initializeLinks() {
         $("#linkUsers").click(function () {
-            window.location.href = "/universityAdmin/showUsers"
+            window.location.href = "/campusAdmin/showUsers"
         });
         $("#linkOric").click(function () {
-            window.location.href = "/universityAdmin/showOric"
+            window.location.href = "/campusAdmin/showOric"
+        });
+        $("#linkFaculty").click(function () {
+            window.location.href = "/campusAdmin/showFaculty"
         });
         $("#univSaveButton").click(function () {
             let dto = makeDtoFromForm();

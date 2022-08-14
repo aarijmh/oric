@@ -6,24 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pk.edu.iqra.oric.domain.AnnouncementType;
 import pk.edu.iqra.oric.domain.OricPositionsTitle;
 import pk.edu.iqra.oric.domain.ProposalType;
-import pk.edu.iqra.oric.dto.DtoInterface;
-import pk.edu.iqra.oric.dto.FacultyDTO;
-import pk.edu.iqra.oric.dto.ResearchDTO;
+import pk.edu.iqra.oric.dto.*;
 import pk.edu.iqra.oric.factory.ServiceFactory;
-import pk.edu.iqra.oric.service.DataService;
-import pk.edu.iqra.oric.service.FileService;
-import pk.edu.iqra.oric.service.GenericResourceService;
-import pk.edu.iqra.oric.service.OricSessionService;
+import pk.edu.iqra.oric.service.*;
 import pk.edu.iqra.oric.utility.NavigationStore;
 import pk.edu.iqra.oric.utility.NavigationUtility;
 import pk.edu.iqra.oric.utility.UtilityFunctions;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -43,14 +41,29 @@ public class DataContoller {
 
     private FileService fileService;
 
+    private UserService userService;
+
+    private OricService oricService;
+
     @Autowired
     public DataContoller(DataService dataService,OricSessionService oricSessionService,
-                         ServiceFactory serviceFactory, FileService fileService){
+                         ServiceFactory serviceFactory, FileService fileService, UserService userService,
+                         OricService oricService){
         this.dataService = dataService;
         this.oricSessionService = oricSessionService;
         this.serviceFactory = serviceFactory;
         this.fileService = fileService;
+        this.userService = userService;
+        this.oricService = oricService;
     }
+
+    @GetMapping("/getUsers")
+    @ResponseBody
+    public List<UserDTO> getUsers(Principal principal) throws  Exception{
+        Integer id  = UtilityFunctions.getIdFromPrincipal(principal);
+        return userService.getUsers(id);
+    }
+
 
     @GetMapping("/getFaculties")
     @ResponseBody
@@ -133,5 +146,24 @@ public class DataContoller {
     @ResponseBody
     public List<AnnouncementType> getAnnouncementTypes(){
         return dataService.getAnnouncementTypes();
+    }
+
+    @GetMapping ("/getOricSession")
+    @ResponseBody
+    public List<OricSessionDTO> getOricSession(Principal principal, HttpServletRequest request) throws Exception{
+        Integer id  = UtilityFunctions.getIdFromPrincipal(principal);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        boolean hasCampusRole = authentication.getAuthorities().stream()
+                .anyMatch(r -> r.getAuthority().equals("ROLE_CAMPUS_ADMIN"));
+
+        if(hasCampusRole){
+            Integer universityId = (Integer) request.getSession().getAttribute("university_id");
+            if(universityId == null)
+                throw new Exception("Illegal Session for Campus Admin");
+            return oricService.getOpenSessionsOfOricOfUniversity(universityId);
+        }
+
+        return oricService.getSessionsOfOricOfAdministrator(id);
     }
 }

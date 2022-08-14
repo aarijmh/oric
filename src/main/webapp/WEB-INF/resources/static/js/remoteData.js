@@ -1,7 +1,7 @@
 function fetchRemoteUsers(callback){
     $.ajax({
         type : "GET",
-        url : "/universityAdmin/getUsers",
+        url : "/data/getUsers",
         beforeSend : function(){
 
         },

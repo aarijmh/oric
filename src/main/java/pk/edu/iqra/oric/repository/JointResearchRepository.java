@@ -13,4 +13,7 @@ public interface JointResearchRepository extends CrudRepository<JointResearch,In
 
     @Query("from JointResearch rl where rl.oricSession.id = ?1")
     List<JointResearch> findOfOricSession(Integer oricSessionId);
+
+    @Query("from JointResearch rl where rl.faculty.campus.id = ?1")
+    List<JointResearch> findOfCampus(Integer campusId);
 }

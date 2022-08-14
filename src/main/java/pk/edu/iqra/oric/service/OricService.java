@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface OricService {
     List<OricSessionDTO> getSessionsOfOricOfAdministrator(Integer administratorId);
+
+    List<OricSessionDTO> getOpenSessionsOfOricOfUniversity(Integer universityId);
     OricSessionDTO saveOricSession(OricSessionDTO oricSessionDTO,Integer administrator);
 
     Oric getOricOfAdministrator(Integer administrator);

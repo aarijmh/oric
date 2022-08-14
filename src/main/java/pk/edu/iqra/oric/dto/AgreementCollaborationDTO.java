@@ -1,6 +1,6 @@
 package pk.edu.iqra.oric.dto;
 
-import pk.edu.iqra.oric.domain.AggrementCollaboration;
+import pk.edu.iqra.oric.domain.AgreementCollaboration;
 import pk.edu.iqra.oric.utility.UtilityFunctions;
 import pk.edu.iqra.oric.utility.UserUtility;
 
@@ -31,12 +31,12 @@ public class AgreementCollaborationDTO extends DtoInterface {
     }
 
 
-    public AgreementCollaborationDTO(AggrementCollaboration aggrementCollaboration) {
+    public AgreementCollaborationDTO(AgreementCollaboration aggrementCollaboration) {
         copyFromObject(this, aggrementCollaboration);
     }
 
 
-    public static void copyFromObject(AgreementCollaborationDTO agreementCollaborationDTO, AggrementCollaboration classObject) {
+    public static void copyFromObject(AgreementCollaborationDTO agreementCollaborationDTO, AgreementCollaboration classObject) {
 
         agreementCollaborationDTO.id = classObject.getId();
         if (classObject.getInitiator() != null) {
@@ -65,7 +65,7 @@ public class AgreementCollaborationDTO extends DtoInterface {
     }
 
 
-    public static void copyFromDto(AgreementCollaborationDTO agreementCollaborationDTO, AggrementCollaboration classObject) {
+    public static void copyFromDto(AgreementCollaborationDTO agreementCollaborationDTO, AgreementCollaboration classObject) {
         classObject.setId(agreementCollaborationDTO.id);
         classObject.setTypeLink(agreementCollaborationDTO.typeLink);
         classObject.setNational(agreementCollaborationDTO.national);

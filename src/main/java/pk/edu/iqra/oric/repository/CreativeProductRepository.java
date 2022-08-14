@@ -13,4 +13,7 @@ public interface CreativeProductRepository extends CrudRepository<CreativeProduc
 
     @Query("from CreativeProduct rl where rl.oricSession.id = ?1")
     List<CreativeProduct> findOfOricSession(Integer oricSessionId);
+
+    @Query("from CreativeProduct rl where rl.faculty.campus.id = ?1")
+    List<CreativeProduct> findOfCampus(Integer campusId);
 }

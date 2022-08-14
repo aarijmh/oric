@@ -46,14 +46,15 @@ public class DataServiceImpl implements DataService {
         List<Role> roles = userService.findUserRolesById(userId);
         boolean adminFound = false;
         for (Role role : roles) {
-            if(role.getRole().toLowerCase().equals("university_admin")){
+            if(role.getRole().equalsIgnoreCase("university_admin")){
                 adminFound = true;
                 break;
             }
         }
         if(adminFound)
             return facultyService.getFacultiesDTOOfAdministrator(userId);
-        return null;
+
+        return facultyService.getFacultiesDTOOfCampusAdministrator(userId);
     }
 
     @Override

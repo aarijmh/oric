@@ -51,7 +51,12 @@ public class UtilityFunctions {
             return Instant.parse(date);
 
         }catch (Exception e){
-            return Instant.now();
+            try {
+               return stringToLocalDate(date).atStartOfDay(ZoneId.of("Asia/Karachi")).toInstant();
+            }
+            catch (Exception e1) {
+                return Instant.now();
+            }
         }
     }
 

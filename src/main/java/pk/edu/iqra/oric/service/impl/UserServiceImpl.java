@@ -1,14 +1,15 @@
 package pk.edu.iqra.oric.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.util.Pair;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import pk.edu.iqra.oric.domain.CampusUser;
 import pk.edu.iqra.oric.domain.Role;
+import pk.edu.iqra.oric.domain.University;
 import pk.edu.iqra.oric.domain.User;
 import pk.edu.iqra.oric.dto.UserDTO;
+import pk.edu.iqra.oric.repository.CampusRepository;
+import pk.edu.iqra.oric.repository.CampusUserRepository;
 import pk.edu.iqra.oric.repository.UserRepository;
 import pk.edu.iqra.oric.service.UserService;
 import pk.edu.iqra.oric.utility.UserUtility;
@@ -22,11 +23,18 @@ import java.util.List;
 public class UserServiceImpl  implements UserService {
 
     private UserRepository userRepository;
+    private CampusRepository campusRepository;
+    private CampusUserRepository campusUserRepository;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository){
+    public UserServiceImpl(UserRepository userRepository, CampusRepository campusRepository, CampusUserRepository campusUserRepository) {
         this.userRepository = userRepository;
+        this.campusRepository = campusRepository;
+        this.campusUserRepository = campusUserRepository;
     }
+
+
+
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
@@ -44,8 +52,9 @@ public class UserServiceImpl  implements UserService {
             throw new Exception("Invalid Request");
 
         List<UserDTO> userDTOList = new ArrayList<>();
+        University university = administrator.getUniversity();
 
-        for (User user : userRepository.findAllUsersOfAdministratorUniversity(administrator.getId())) {
+        for (User user : userRepository.findAllUsersOfAdministratorUniversity(university.getId())) {
             userDTOList.add(new UserDTO(user));
         }
 
@@ -117,5 +126,29 @@ public class UserServiceImpl  implements UserService {
         }
 
         return ids;
+    }
+
+    @Transactional(rollbackOn = Exception.class)
+    @Override
+    public void saveUserCampus(Integer campusId, Integer userId) {
+
+        CampusUser campusUser = campusUserRepository.findCampusUser(campusId,userId);
+        if(campusUser != null)
+            return;
+        campusUser = new CampusUser();
+        campusUser.setUser(userRepository.findById(userId).get());
+        campusUser.setCampus(campusRepository.findById(campusId).get());
+        campusUserRepository.save(campusUser);
+    }
+
+    @Override
+    public List<UserDTO> getUsersOfCampus(Integer campusId) throws Exception {
+        List<UserDTO> userDTOList = new ArrayList<>();
+
+        for (User user : userRepository.findAllUsersOfCampus(campusId)) {
+            userDTOList.add(new UserDTO(user));
+        }
+
+        return userDTOList;
     }
 }

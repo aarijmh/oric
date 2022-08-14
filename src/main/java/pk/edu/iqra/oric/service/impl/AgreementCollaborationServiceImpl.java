@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pk.edu.iqra.oric.domain.OricSession;
-import pk.edu.iqra.oric.domain.AggrementCollaboration;
+import pk.edu.iqra.oric.domain.AgreementCollaboration;
 import pk.edu.iqra.oric.domain.User;
 import pk.edu.iqra.oric.dto.DtoInterface;
 import pk.edu.iqra.oric.dto.AgreementCollaborationDTO;
@@ -13,6 +13,7 @@ import pk.edu.iqra.oric.repository.AgreementCollaborationRepository;
 import pk.edu.iqra.oric.service.FacultyService;
 import pk.edu.iqra.oric.service.AgreementCollaborationService;
 import pk.edu.iqra.oric.service.UserService;
+import pk.edu.iqra.oric.utility.Constants;
 import pk.edu.iqra.oric.utility.UserUtility;
 
 import java.time.Instant;
@@ -44,7 +45,7 @@ public class AgreementCollaborationServiceImpl implements AgreementCollaboration
     }
 
     @Override
-    public List<AggrementCollaboration> getResource(Integer oricSessionId) {
+    public List<AgreementCollaboration> getResource(Integer oricSessionId) {
         return repository.findOfOricSession(oricSessionId);
     }
 
@@ -55,7 +56,7 @@ public class AgreementCollaborationServiceImpl implements AgreementCollaboration
 
     @Override
     public DtoInterface saveResource(Integer oricSessionId, Integer userId, String dtoString) throws Exception {
-        AggrementCollaboration classObject = null;
+        AgreementCollaboration classObject = null;
         ObjectMapper mapper = new ObjectMapper();
         AgreementCollaborationDTO dto = mapper.readValue(dtoString, AgreementCollaborationDTO.class);
 
@@ -63,7 +64,7 @@ public class AgreementCollaborationServiceImpl implements AgreementCollaboration
         OricSession oricSession = oricSessionRepository.findById(oricSessionId).get();
 
         if (dto.getId() == null || dto.getId().equals(0)) {
-            classObject = new AggrementCollaboration();
+            classObject = new AgreementCollaboration();
             classObject.setCreatedOn(Instant.now());
             classObject.setCreatedBy(creator);
             classObject.setOricSession(oricSession);
@@ -103,5 +104,18 @@ public class AgreementCollaborationServiceImpl implements AgreementCollaboration
         return dto;
     }
 
+    @Override
+    public List<AgreementCollaborationDTO> getResourceDTO(List<AgreementCollaboration> classObjectList){
+        return classObjectList.stream().map(x->new AgreementCollaborationDTO(x)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AgreementCollaboration> getResourceForRole(Integer oricSessionId, Integer campusId, String role){
+        if(role.equalsIgnoreCase(Constants.UNIVERSITY_ADMINISTRATOR_ROLE.toLowerCase())){
+            return repository.findOfOricSession(oricSessionId);
+        }
+
+        return repository.findOfCampus(campusId);
+    }
 
 }

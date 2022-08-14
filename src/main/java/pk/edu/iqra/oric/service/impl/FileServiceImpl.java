@@ -78,7 +78,7 @@ public class FileServiceImpl implements FileService {
         if (!directory.toFile().exists())
             return null;
         for (File ff : directory.toFile().listFiles()) {
-            if (ff.getName().toLowerCase().equals(fileName.toLowerCase())) {
+            if (ff.getName().equalsIgnoreCase(fileName.toLowerCase())) {
                 return ff;
             }
         }
@@ -90,7 +90,7 @@ public class FileServiceImpl implements FileService {
         if (!directory.toFile().exists())
             return;
         for (File ff : directory.toFile().listFiles()) {
-            if (ff.getName().toLowerCase().equals(fileName.toLowerCase())) {
+            if (ff.getName().equalsIgnoreCase(fileName.toLowerCase())) {
                 ff.delete();
                 return;
             }

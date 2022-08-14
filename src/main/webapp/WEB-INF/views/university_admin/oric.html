@@ -3,7 +3,7 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -55,10 +55,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="container-xl" style="height: 500px">
         <div class="row mb-2">
             <div class="col-md-2">
-                <button id="addSession" class="btn-primary">Add Session</button>
+
+                <button id="addSession" class="btn-primary" sec:authorize="hasRole('UNIVERSITY_ADMIN')">Add Session</button>
             </div>
             <div class="col-md-2">
-                <button id="editOric" class="btn-primary">Edit Oric</button>
+                <button id="editOric" class="btn-primary" sec:authorize="hasRole('UNIVERSITY_ADMIN')">Edit Oric</button>
             </div>
         </div>
         <div class="row justify-content-left"
@@ -471,7 +472,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     function initializeTable(){
         //
         $table.bootstrapTable({
-            url: "/universityAdmin/getOricSession",
+            url: "/data/getOricSession",
             columns: columns,
             search : true
         })

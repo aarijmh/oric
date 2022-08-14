@@ -13,6 +13,7 @@ import pk.edu.iqra.oric.repository.JointResearchRepository;
 import pk.edu.iqra.oric.service.FacultyService;
 import pk.edu.iqra.oric.service.JointResearchService;
 import pk.edu.iqra.oric.service.UserService;
+import pk.edu.iqra.oric.utility.Constants;
 import pk.edu.iqra.oric.utility.UserUtility;
 
 import java.time.Instant;
@@ -114,6 +115,20 @@ public class JointResearchServiceImpl implements JointResearchService {
         dto.setId(repository.save(classObject).getId());
 
         return dto;
+    }
+
+    @Override
+    public List<JointResearchDTO> getResourceDTO(List<JointResearch> classObjectList){
+        return classObjectList.stream().map(x->new JointResearchDTO(x)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<JointResearch> getResourceForRole(Integer oricSessionId, Integer campusId, String role){
+        if(role.equalsIgnoreCase(Constants.UNIVERSITY_ADMINISTRATOR_ROLE.toLowerCase())){
+            return repository.findOfOricSession(oricSessionId);
+        }
+
+        return repository.findOfCampus(campusId);
     }
 
 

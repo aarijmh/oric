@@ -13,6 +13,7 @@ import pk.edu.iqra.oric.repository.ResearchContractRepository;
 import pk.edu.iqra.oric.service.FacultyService;
 import pk.edu.iqra.oric.service.ResearchContractService;
 import pk.edu.iqra.oric.service.UserService;
+import pk.edu.iqra.oric.utility.Constants;
 import pk.edu.iqra.oric.utility.UserUtility;
 
 import java.time.Instant;
@@ -111,5 +112,19 @@ public class ResearchContractServiceImpl implements ResearchContractService {
         dto.setId(researchContractRepository.save(classObject).getId());
 
         return dto;
+    }
+
+    @Override
+    public List<ResearchContractDTO> getResourceDTO(List<ResearchContract> classObjectList){
+        return classObjectList.stream().map(x->new ResearchContractDTO(x)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ResearchContract> getResourceForRole(Integer oricSessionId, Integer campusId, String role){
+        if(role.equalsIgnoreCase(Constants.UNIVERSITY_ADMINISTRATOR_ROLE.toLowerCase())){
+            return researchContractRepository.findOfOricSession(oricSessionId);
+        }
+
+        return researchContractRepository.findOfCampus(campusId);
     }
 }

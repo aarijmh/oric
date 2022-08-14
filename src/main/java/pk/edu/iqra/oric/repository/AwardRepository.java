@@ -13,4 +13,7 @@ public interface AwardRepository extends CrudRepository<Award,Integer> {
 
     @Query("from Award rl where rl.oricSession.id = ?1")
     List<Award> findOfOricSession(Integer oricSessionId);
+
+    @Query("from Award rl where rl.faculty.campus.id = ?1")
+    List<Award> findOfCampus(Integer campusId);
 }

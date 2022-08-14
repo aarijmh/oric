@@ -3,6 +3,7 @@ package pk.edu.iqra.oric.domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "announcement")
@@ -50,6 +51,17 @@ public class Announcement implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "oric_session")
     private OricSession oricSession;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "faculty", nullable = false)
+    private Faculty faculty;
+
+    @Column(name = "expiry_date")
+    private LocalDate expiryDate;
+
+    @Column(name = "expiry_time")
+    private String expiryTime;
+
 
     public Integer getId() {
         return id;
@@ -147,4 +159,27 @@ public class Announcement implements Serializable {
         this.oricSession = oricSession;
     }
 
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
+    }
+
+    public LocalDate getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setExpiryDate(LocalDate expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public String getExpiryTime() {
+        return expiryTime;
+    }
+
+    public void setExpiryTime(String expiryTime) {
+        this.expiryTime = expiryTime;
+    }
 }

@@ -259,39 +259,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
         title:'Select'
     },
         {
-            field: 'area',
-            width: '200',
-            title:'Area'
-        },
-        {
-            field: 'piName',
-            width: '90',
-            title:'Principal Investigator'
-        },
-        {
-            field: 'area',
-            width: '90',
-            title:'Area'
-        },
-        {
             field: 'campusName',
-            width: '90',
+            width: '200',
             title:'Campus'
         },
         {
-            field: 'facultyName',
+            field: 'name',
+            width: '390',
+            title:'Name'
+        },
+        {
+            field: 'shortName',
             width: '90',
-            title:'Faculty'
+            title:'Short Name'
         },
         {
-            field: 'govtBody',
-            width: '50',
-            title:"Government Body"
-        },
-        {
-            field: 'coalitionPartner',
-            width: '150',
-            title:'Coalition Partner'
+            field: 'deanName',
+            width: '90',
+            title: 'Dean'
         },
         {
             field: 'actions',
@@ -325,7 +310,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     function initializeTable(){
         //
         $table.bootstrapTable({
-            url: "/oricAdmin/oricSession/"+$("#oricSessionId").val()+"/getResource/policy",
+            url: "/data/getFaculties",
             columns: columns,
             search : true
         })
@@ -337,9 +322,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     function processUser(users){
         let l = [];
-        l.push("piId");
-        l.push("coPi1Id");
-        l.push("coPi2Id");
+        l.push("deanId");
         let facName = (fac) => fac.name;
         populateListUsers(l,users,false,facName);
     }

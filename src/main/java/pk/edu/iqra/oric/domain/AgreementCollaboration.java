@@ -1,12 +1,14 @@
 package pk.edu.iqra.oric.domain;
 
 import javax.persistence.*;
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
 
 @Entity
 @Table(name = "aggrement_collaboration")
-public class AggrementCollaboration implements Serializable {
+public class AgreementCollaboration implements Serializable {
+    @Serial
     private static final long serialVersionUID = 705857834409474468L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

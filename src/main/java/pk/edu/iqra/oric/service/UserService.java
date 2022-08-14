@@ -22,4 +22,8 @@ public interface UserService {
     User getUserByUserId(Integer id);
 
     Integer[] getUniversityAndCampusIdOfUser(Integer userId);
+
+    void saveUserCampus(Integer campusId, Integer userId);
+
+    List<UserDTO> getUsersOfCampus(Integer administratorId) throws Exception;
 }

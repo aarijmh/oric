@@ -9,5 +9,8 @@ import java.util.List;
 public interface ResearchLinkRepository extends CrudRepository<ResearchLink,Integer> {
 
     @Query("from ResearchLink rl where rl.oricSession.id = ?1")
-    List<ResearchLink> findResearchLinksOfOricSession(Integer oricSessionId);
+    List<ResearchLink> findOfOricSession(Integer oricSessionId);
+
+    @Query("from ResearchLink rl where rl.faculty.campus.id = ?1")
+    List<ResearchLink> findOfCampus(Integer campusId);
 }
