@@ -62,7 +62,7 @@ public class SecurityConfig {
                                 authz
 
                                         .mvcMatchers("/universityAdmin/**").hasAnyRole("UNIVERSITY_ADMIN")
-                                        .mvcMatchers("/oricAdmin/**").hasAnyRole("UNIVERSITY_ADMIN")
+                                        .mvcMatchers("/oricAdmin/**").hasAnyRole("UNIVERSITY_ADMIN","CAMPUS_ADMIN")
                                         .mvcMatchers("/campusAdmin/**").hasAnyRole("UNIVERSITY_ADMIN","CAMPUS_ADMIN")
                                         .mvcMatchers("/data/**").hasAnyRole("UNIVERSITY_ADMIN","CAMPUS_ADMIN")
                                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
