@@ -1,3 +1,0 @@
-2022-07-19 08:38:57,129 WARN com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16h10m54s879ms166µs200ns).
-2022-07-19 12:27:07,590 WARN com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=17m6s849ms62µs700ns).
-2022-07-19 12:34:37,675 WARN org.springframework.web.servlet.PageNotFound [http-nio-8080-exec-10] No mapping for GET /favicon.ico
