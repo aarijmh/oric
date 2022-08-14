@@ -1,9 +1,6 @@
 package pk.edu.iqra.oric.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -18,6 +15,7 @@ import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import pk.edu.iqra.oric.interceptors.CampusAdminInterceptor;
 import pk.edu.iqra.oric.interceptors.OricInterceptor;
+import pk.edu.iqra.oric.interceptors.RoleInterceptor;
 
 @EnableWebMvc
 @Configuration
@@ -75,10 +73,16 @@ public class WebConfigurer implements WebMvcConfigurer {
 		return new CampusAdminInterceptor();
 	}
 
+	@Bean
+	public RoleInterceptor roleInterceptor() {
+		return new RoleInterceptor();
+	}
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(oricInterceptor()).addPathPatterns("/oricAdmin/**");
 		registry.addInterceptor(campusAdminInterceptor()).addPathPatterns("/campusAdmin/**");
+		registry.addInterceptor(roleInterceptor()).addPathPatterns("/universityAdmin/**","/campusAdmin/**","/oricAdmin/**");
 	}
 	@Bean(name = "multipartResolver")
 	public CommonsMultipartResolver getResolver() {
