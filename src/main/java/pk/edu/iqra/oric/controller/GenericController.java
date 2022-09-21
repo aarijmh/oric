@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class GenericController {
     @GetMapping("/")
-    public String toLogin() {
-        return "loginForm";
+    public String toHome() {
+        return "home_test";
     }
 
     @GetMapping("/login")

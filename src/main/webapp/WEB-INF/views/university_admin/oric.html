@@ -3,14 +3,16 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Iqra University -- Users</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="/resources/static/css/adminlte/all.min.css">
     <!-- Theme style -->
@@ -52,30 +54,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- /.content-header -->
 
         <!-- Main content -->
-    <div class="container-xl" style="height: 500px">
-        <div class="row mb-2">
-            <div class="col-md-2">
+        <div class="container-xl" style="height: 500px">
+            <div class="row mb-2">
+                <div class="col-md-2">
 
-                <button id="addSession" class="btn-primary" sec:authorize="hasRole('UNIVERSITY_ADMIN')">Add Session</button>
+                    <button id="addSession" class="btn-primary" sec:authorize="hasRole('UNIVERSITY_ADMIN')">Add
+                        Session
+                    </button>
+                </div>
+                <div class="col-md-2">
+                    <button id="editOric" class="btn-primary" sec:authorize="hasRole('UNIVERSITY_ADMIN')">Edit Oric
+                    </button>
+                </div>
             </div>
-            <div class="col-md-2">
-                <button id="editOric" class="btn-primary" sec:authorize="hasRole('UNIVERSITY_ADMIN')">Edit Oric</button>
+            <div class="row justify-content-left"
+                 style="margin-left: 10px; margin-top: 5px">
+                <table style="font-size: 14px;"
+                       class="table table-hover  table-bordered table-sm table-responsive-sm mx-auto greenTable"
+                       id="dataTable" data-unique-id="id" data-use-row-attr-func="true"
+
+                >
+                </table>
             </div>
         </div>
-        <div class="row justify-content-left"
-             style="margin-left: 10px; margin-top: 5px">
-            <table style="font-size: 14px;"
-                   class="table table-hover  table-bordered table-sm table-responsive-sm mx-auto greenTable"
-                   id="dataTable" data-unique-id="id" data-use-row-attr-func="true"
-
-            >
-            </table>
-        </div>
-    </div>
         <div id="dataModal" class="modal fade" role="dialog"
              aria-labelledby="myExtraLargeModalLabel" aria-hidden="true"
              data-keyboard="false">
-            <div class="modal-dialog modal-lg" >
+            <div class="modal-dialog modal-lg">
 
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -83,42 +88,42 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="modal-body  ui-front" id="modalBody">
 
 
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Start Date</label>
-                                        <input class="form-control dateInput" style="width: 100%;" id="oricStartDate">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>End Date</label>
-                                        <input class="form-control dateInput" style="width: 100%;" id="oricEndDate">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Description</label>
-                                        <input class="form-control" style="width: 100%;" id="oricDescription">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Last Name</label>
-                                        <select id="oricIsClosed" class="form-control select2">
-                                            <option value="true">Closed</option>
-                                            <option value="false">Open</option>
-                                        </select>
-                                    </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Start Date</label>
+                                    <input class="form-control dateInput" style="width: 100%;" id="oricStartDate">
                                 </div>
                             </div>
-
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>End Date</label>
+                                    <input class="form-control dateInput" style="width: 100%;" id="oricEndDate">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <input class="form-control" style="width: 100%;" id="oricDescription">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <select id="oricIsClosed" class="form-control select2">
+                                        <option value="true">Closed</option>
+                                        <option value="false">Open</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
 
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger mr-auto"
-                                id="oricSaveButton" >Save</button>
+                                id="oricSaveButton">Save
+                        </button>
                     </div>
                 </div>
             </div>
@@ -127,7 +132,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div id="oricModal" class="modal fade" role="dialog"
              aria-labelledby="myExtraLargeModalLabel" aria-hidden="true"
              data-keyboard="false">
-            <div class="modal-dialog modal-lg" >
+            <div class="modal-dialog modal-xl">
 
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -190,32 +195,68 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </div>
                         </div>
 
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <label>About</label>
+
+                                    <textarea id='about' class='form-control ' style='width: 100%;'>
+                                    </textarea>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <label>Mission</label>
+
+                                    <textarea id='mission' class='form-control ' style='width: 100%;'>
+                                    </textarea>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <label>Vision</label>
+
+                                    <textarea id='vision' class='form-control ' style='width: 100%;'>
+                                    </textarea>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger mr-auto"
-                                id="oricDetailSaveButton" >Save</button>
+                                id="oricDetailSaveButton">Save
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-    <!-- /.content-wrapper -->
-    <input type="hidden" id="oricSessionId">
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+        <!-- /.content-wrapper -->
+        <input type="hidden" id="oricSessionId">
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
 
-    <!-- Main Footer -->
-    <footer class="main-footer">
-        <!-- To the right -->
-        <div class="float-right d-none d-sm-inline">
-            Anything you want
-        </div>
-        <!-- Default to the left -->
-        <strong>Copyright &copy; 1998-2022 Iqra University.</strong> All rights reserved.
-    </footer>
-</div>
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <!-- To the right -->
+            <div class="float-right d-none d-sm-inline">
+                Anything you want
+            </div>
+            <!-- Default to the left -->
+            <strong>Copyright &copy; 1998-2022 Iqra University.</strong> All rights reserved.
+        </footer>
+    </div>
 </div>
 
 </body>
@@ -238,18 +279,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script>
 
     const $table = $("#dataTable");
-    $(document).ready(function() {
+    $(document).ready(function () {
         initializeLinks();
         initializeTable();
     });
 
-    function initializeLinks(){
-        $("#linkUsers").click(function(){
+    function initializeLinks() {
+        $("#linkUsers").click(function () {
             window.location.href = "/universityAdmin/showUsers"
         });
-        $("#addSession").click(function (){
+        $("#addSession").click(function () {
             $("#dataModal").modal('show');
-            $('#dataModal').on('shown.bs.modal', function() {
+            $('#dataModal').on('shown.bs.modal', function () {
                 $('.dateInput').datepicker({
 
                     dateFormat: "mm/dd/yyyy",
@@ -260,93 +301,93 @@ scratch. This page gets rid of all links and provides the needed markup only.
             });
         })
         $("#oricSaveButton").unbind();
-        $("#oricSaveButton").on('click',function(){
+        $("#oricSaveButton").on('click', function () {
             let dto = makeDtoFromForm();
             $.ajax({
-                type : "POST",
-                url : "/universityAdmin/saveOricSession",
-                data : JSON.stringify(dto),
+                type: "POST",
+                url: "/universityAdmin/saveOricSession",
+                data: JSON.stringify(dto),
                 // You are expected to receive the generated JSON (json_encode($data))
-                beforeSend : function(){
+                beforeSend: function () {
 
                 },
-                complete:function(){
+                complete: function () {
                 },
                 contentType: "application/json",
-                success : function(data) {
+                success: function (data) {
                     Toast.fire({
                         icon: 'success',
                         title: 'Updated Successfully'
                     });
-                    let r =  $table.bootstrapTable('getRowByUniqueId', data.id);
-                    if(r == null)
-                     $table.bootstrapTable('insertRow', {index: 0, row: data});
-                    else{
+                    let r = $table.bootstrapTable('getRowByUniqueId', data.id);
+                    if (r == null)
+                        $table.bootstrapTable('insertRow', {index: 0, row: data});
+                    else {
                         $table.bootstrapTable('updateByUniqueId', {id: data.id, row: data})
                     }
                     $("#dataModal").modal('hide');
                 },
-                error : function(er) {
+                error: function (er) {
 
                 }
             });
         });
 
-        $("#editOric").click(function(){
+        $("#editOric").click(function () {
 
             $.ajax({
-                type : "GET",
-                url : "/universityAdmin/getOricOfAdministrator",
-                beforeSend : function(){
+                type: "GET",
+                url: "/universityAdmin/getOricOfAdministrator",
+                beforeSend: function () {
 
                 },
-                complete:function(){
+                complete: function () {
                 },
-                success : function(oric) {
+                success: function (oric) {
                     $.ajax({
-                        type : "GET",
-                        url : "/universityAdmin/getUsers",
-                        beforeSend : function(){
+                        type: "GET",
+                        url: "/universityAdmin/getUsers",
+                        beforeSend: function () {
 
                         },
-                        complete:function(){
+                        complete: function () {
                         },
-                        success : function(users) {
+                        success: function (users) {
                             $('#oricFocal').empty();
 
-                            $.each(users,function(k,v){
-                                let option = "<option value='"+v.id+"'>"+v.name+"</option>";
+                            $.each(users, function (k, v) {
+                                let option = "<option value='" + v.id + "'>" + v.name + "</option>";
                                 $('#oricFocal').append(option);
                             });
 
                             populateFieldsORIC(oric);
                             $("#oricModal").modal("show");
                         },
-                        error : function(er) {
+                        error: function (er) {
 
                         }
                     });
                 },
-                error : function(er) {
+                error: function (er) {
 
                 }
             });
         });
 
-        $("#oricDetailSaveButton").click(function(){
+        $("#oricDetailSaveButton").click(function () {
             let dto = makeOricDtoOfForm();
             $.ajax({
-                type : "POST",
-                url : "/universityAdmin/saveOric",
-                data : JSON.stringify(dto),
+                type: "POST",
+                url: "/universityAdmin/saveOric",
+                data: JSON.stringify(dto),
                 // You are expected to receive the generated JSON (json_encode($data))
-                beforeSend : function(){
+                beforeSend: function () {
 
                 },
-                complete:function(){
+                complete: function () {
                 },
                 contentType: "application/json",
-                success : function(data) {
+                success: function (data) {
                     Toast.fire({
                         icon: 'success',
                         title: 'Updated Successfully'
@@ -354,33 +395,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     $("#oricModal").modal('hide');
                 },
-                error : function(er) {
+                error: function (er) {
 
                 }
             });
         });
     }
 
-    function populateFieldsORIC(oricDTO){
+    function populateFieldsORIC(oricDTO) {
         let dto = new Object();
-        if(typeof oricDTO === 'undefined' || oricDTO == null){
-            dto =  getEmptyOricDTO();
-        }
-        else{
+        if (typeof oricDTO === 'undefined' || oricDTO == null) {
+            dto = getEmptyOricDTO();
+        } else {
             dto = oricDTO;
         }
 
-       $("#oricName").val(dto.name);
+        $("#oricName").val(dto.name);
         $("#oricEmail").val(dto.email);
         $("#oricAddress").val(dto.address);
         $("#oricWebsite").val(dto.website);
         $("#oricWebsiteShort").val(dto.websiteShort);
-        $("#oricFocal").val(dto.focal );
+        $("#oricFocal").val(dto.focal);
         $("#oricFocalSite").val(dto.focalPersonWebsite);
         $("#oricBank").val(dto.bankAccount);
+        $("#about").val(dto.about);
+        $("#vision").val(dto.vision);
+        $("#mission").val(dto.mission);
     }
 
-    function getEmptyOricDTO(){
+    function getEmptyOricDTO() {
         let dto = new Object();
         dto.id = "";
         dto.name = "";
@@ -391,59 +434,64 @@ scratch. This page gets rid of all links and provides the needed markup only.
         dto.focalPerson = 0;
         dto.focalPersonWebsite = "";
         dto.bankAccount = "";
+        dto.about = "";
+        dto.mission = "";
+        dto.vision = "";
     }
-    function populateFields(userDTO){
+
+    function populateFields(userDTO) {
         let dto = new Object();
-        if(typeof userDTO === 'undefined' || userDTO == null){
-          dto =  getEmptyDTO();
-        }
-        else{
+        if (typeof userDTO === 'undefined' || userDTO == null) {
+            dto = getEmptyDTO();
+        } else {
             dto = userDTO;
         }
 
-          $("#oricSessionId").val(dto.id);
-          $("#oricStartDate").val(dto.startDate);
-          $("#oricEndDate").val(dto.endDate);
-          $("#oricDescription").val(dto.description);
-          if(dto.isClosed != null)
-            $("#oricIsClosed").val( dto.isClosed.toString());
-          else{
-              $("#oricIsClosed").val("false");
-          }
+        $("#oricSessionId").val(dto.id);
+        $("#oricStartDate").val(dto.startDate);
+        $("#oricEndDate").val(dto.endDate);
+        $("#oricDescription").val(dto.description);
+
+        if (dto.isClosed != null)
+            $("#oricIsClosed").val(dto.isClosed.toString());
+        else {
+            $("#oricIsClosed").val("false");
+        }
     }
+
     const columns = [{
 
         align: 'right',
         valign: 'middle',
         width: '10',
-        checkbox:true,
-        title:'Select'
+        checkbox: true,
+        title: 'Select'
     },
         {
             field: 'startDate',
             width: '100',
-            title:'Start Date'
+            title: 'Start Date'
         },
         {
             field: 'endDate',
             width: '100',
-            title:'End Date'
+            title: 'End Date'
         },
         {
             field: 'description',
             width: '100',
-            title:'Description'
+            title: 'Description'
         },
         {
             field: 'isClosed',
             width: '20',
-            title:'Closed?'
+            title: 'Closed?'
         },
         {
             field: 'actions',
             width: '50',
             title: 'Actions',
-            formatter: function(value, row, index, field) {
+            formatter: function (value, row, index, field) {
                 let actions = [];
                 actions.push('<div  col_name="actions"  row_id="" class="action_tabs" >');
                 actions.push('<span class="fas fa-edit edit" ></span>');
@@ -455,30 +503,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
             },
             events: {
 
-                'click .delete_purchase': function(e, value, row, index) {
+                'click .delete_purchase': function (e, value, row, index) {
                 }
                 ,
-                'click .edit': function(e, value, row, index) {
+                'click .edit': function (e, value, row, index) {
                     populateFields(row);
                     $("#dataModal").modal('show');
                 },
-                'click .open': function(e, value, row, index) {
-                    window.location.href = "/oricAdmin/showOricSession?oricSessionId="+parseInt(row.id);
+                'click .open': function (e, value, row, index) {
+                    window.location.href = "/oricAdmin/showOricSession?oricSessionId=" + parseInt(row.id);
                 }
 
             }
         }];
 
-    function initializeTable(){
+    function initializeTable() {
         //
         $table.bootstrapTable({
             url: "/data/getOricSession",
             columns: columns,
-            search : true
+            search: true
         })
     }
 
-    function makeDtoFromForm(){
+    function makeDtoFromForm() {
         let dto = new Object();
         dto.id = $("#oricSessionId").val();
         dto.startDate = $("#oricStartDate").val();
@@ -488,20 +536,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
         return dto;
     }
 
-    function makeOricDtoOfForm(){
+    function makeOricDtoOfForm() {
         let dto = new Object();
         dto.name = $("#oricName").val();
         dto.email = $("#oricEmail").val();
         dto.address = $("#oricAddress").val();
-        dto.website  = $("#oricWebsite").val();
+        dto.website = $("#oricWebsite").val();
         dto.websiteShort = $("#oricWebsiteShort").val();
         dto.focalPersonWebsite = $("#oricFocalSite").val();
         dto.focal = $("#oricFocal").val();
         dto.bankAccount = $("#oricBank").val();
-
+        dto.about = $("#about").val();
+        dto.vision = $("#vision").val();
+        dto.mission = $("#mission").val();
         return dto;
     }
-    function getEmptyDTO(){
+
+    function getEmptyDTO() {
         let dto = new Object();
         dto.id = "";
         dto.startDate = "";

@@ -29,14 +29,14 @@ public class SecurityConfig {
     UserDetailsService userDetailsService;
 
     @Autowired
-     CustomSuccessHandler customSuccessHandler;
+    CustomSuccessHandler customSuccessHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        DelegatingPasswordEncoder delPasswordEncoder=  (DelegatingPasswordEncoder)PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        BCryptPasswordEncoder bcryptPasswordEncoder =new BCryptPasswordEncoder();
-    delPasswordEncoder.setDefaultPasswordEncoderForMatches(bcryptPasswordEncoder);
-    return delPasswordEncoder; 
+        DelegatingPasswordEncoder delPasswordEncoder = (DelegatingPasswordEncoder) PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
+        delPasswordEncoder.setDefaultPasswordEncoderForMatches(bcryptPasswordEncoder);
+        return delPasswordEncoder;
     }
 
     @Bean
@@ -58,31 +58,31 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authz) -> {
-                            try {
-                                authz
+                    try {
+                        authz
 
-                                        .mvcMatchers("/universityAdmin/**").hasAnyRole("UNIVERSITY_ADMIN")
-                                        .mvcMatchers("/oricAdmin/**").hasAnyRole("UNIVERSITY_ADMIN","CAMPUS_ADMIN")
-                                        .mvcMatchers("/campusAdmin/**").hasAnyRole("UNIVERSITY_ADMIN","CAMPUS_ADMIN")
-                                        .mvcMatchers("/data/**").hasAnyRole("UNIVERSITY_ADMIN","CAMPUS_ADMIN")
-                                        .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                        .antMatchers("/**").permitAll()
-                                        .anyRequest().authenticated().
-                                        and().exceptionHandling().accessDeniedPage("/accessDenied");
+                                .mvcMatchers("/universityAdmin/**").hasAnyRole("UNIVERSITY_ADMIN")
+                                .mvcMatchers("/oricAdmin/**").hasAnyRole("UNIVERSITY_ADMIN", "CAMPUS_ADMIN")
+                                .mvcMatchers("/campusAdmin/**").hasAnyRole("UNIVERSITY_ADMIN", "CAMPUS_ADMIN")
+                                .mvcMatchers("/data/**").hasAnyRole("UNIVERSITY_ADMIN", "CAMPUS_ADMIN")
+                                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                                .antMatchers("/**").permitAll()
+                                .anyRequest().authenticated().
+                                and().exceptionHandling().accessDeniedPage("/accessDenied");
 //                                        .and()
 //                                        .formLogin().loginPage("/login").successHandler(customSuccessHandler)
 //                                        .usernameParameter("username").passwordParameter("password")
 //                                        .and()
 //                                        .exceptionHandling().accessDeniedPage("/access_denied");
-                            } catch (Exception e) {
-                                throw new RuntimeException(e);
-                            }
-                        }
-                );
-    http.csrf().disable();
-    http.cors().disable();
-    http.formLogin().loginPage("/login").successHandler(customSuccessHandler).usernameParameter("username").passwordParameter("password");
-    http.exceptionHandling().accessDeniedPage("/access_denied");
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+        );
+        http.csrf().disable();
+        http.cors().disable();
+        http.formLogin().loginPage("/login").successHandler(customSuccessHandler).usernameParameter("username").passwordParameter("password");
+        http.exceptionHandling().accessDeniedPage("/access_denied");
         return http.build();
     }
 
@@ -98,7 +98,7 @@ public class SecurityConfig {
         .and()
         .exceptionHandling().accessDeniedPage("/access_denied");
     }*/
-    
+
 //    @Configuration
 //    @Order(1)                                                        
 //    public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {

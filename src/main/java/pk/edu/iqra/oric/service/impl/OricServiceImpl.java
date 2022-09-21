@@ -106,6 +106,10 @@ public class OricServiceImpl implements OricService {
         oric.setWebpageFocalPerson(oricDTO.getFocalPersonWebsite());
         oric.setWebsite(oricDTO.getWebsite());
         oric.setWebsiteShort(oricDTO.getWebsiteShort());
+        oric.setAbout(oricDTO.getAbout());
+        oric.setMission(oricDTO.getMission());
+        oric.setVision(oricDTO.getVision());
+
         if(oricDTO.getFocal() != null)
             oric.setFocalPerson(userService.getUserByUserId(oricDTO.getFocal()));
         else

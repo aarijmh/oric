@@ -1,13 +1,18 @@
 package pk.edu.iqra.oric.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import pk.edu.iqra.oric.domain.Oric;
 import pk.edu.iqra.oric.domain.University;
 import pk.edu.iqra.oric.domain.User;
 import pk.edu.iqra.oric.dto.UniversityDTO;
+import pk.edu.iqra.oric.publicdto.PublicOricDTO;
 import pk.edu.iqra.oric.repository.UniversityRepository;
 import pk.edu.iqra.oric.service.UniversityService;
 import pk.edu.iqra.oric.service.UserService;
+import pk.edu.iqra.oric.utility.UtilityFunctions;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -93,5 +98,20 @@ public class UniversityServiceImpl implements UniversityService {
         universityDTO.setId(university.getId());
 
         return universityDTO;
+    }
+
+    @Override
+    public University getUniversityByEncryptedId(String encryptedId) {
+        return universityRepository.findUniversityByEncryptedId(encryptedId);
+    }
+
+    @Override
+    public PublicOricDTO getPublicInfoAboutORIC(String encryptedId) {
+        Oric oric = universityRepository.findOricOfUniversity(encryptedId);
+        PublicOricDTO publicOricDTO = new PublicOricDTO();
+        publicOricDTO.setAbout(oric.getAbout());
+        publicOricDTO.setMission(oric.getMission());
+        publicOricDTO.setVision(oric.getVision());
+        return publicOricDTO;
     }
 }

@@ -20,8 +20,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="/resources/static/css/bootstrap-table.css">
     <link rel="stylesheet"
           href="/resources/static/css/bootstrap-datepicker.css">
-    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+    <link href="/resources/static/css/summernote.min.css" rel="stylesheet">
 
 </head>
 <body class="hold-transition layout-top-nav">
@@ -225,7 +224,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                     <label>longDescription</label>
 
-                                    <textarea id='longDescription' class='form-control ' style='width: 100%;'>
+                                    <textarea id='longDescription' class='form-control ' style='width: 100%;height: 200px'>
                                     </textarea>
 
                                 </div>
@@ -296,29 +295,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="/resources/static/js/bootstrap-datepicker.min.js"></script>
 <script src="/resources/static/js/select2.full.min.js"></script>
 <script src="/resources/static/js/sweetalert2.all.min.js"></script>
-<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <script src="/resources/static/js/util.js"></script>
 <script src="/resources/static/js/remoteData.js"></script>
 <script src="/resources/static/js/upload.js"></script>
+
+<script src="/resources/static/js/summernote.min.js"></script>
 <script>
 
     const $table = $("#dataTable");
-    var quill;
+    var $summNote;
     $(document).ready(function () {
         initializeLinks();
         initializeTable();
         fetchRemoteData();
-        quill = new Quill('#longDescription', {
-            modules: {
-                toolbar: [
-                    [{header: [1, 2, false]}],
-                    ['bold', 'italic', 'underline'],
-                    ['image', 'code-block']
-                ]
-            },
-            placeholder: 'Compose an epic...',
-            theme: 'snow'  // or 'bubble'
-        });
+        $summNote = $("#longDescription").summernote();
+        // quill = new Quill('#longDescription', {
+        //     modules: {
+        //         toolbar: toolbarOptions
+        //     },
+        //     placeholder: 'Compose an epic...',
+        //     theme: 'snow'  // or 'bubble'
+        // });
     });
 
 
@@ -604,7 +601,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         obj.title = $('#title').val();
         obj.shortDescription = $('#shortDescription').val();
         obj.url = $('#url').val();
-        obj.longDescription = $('#longDescription').val();
+
+        obj.longDescription = $('#longDescription').summernote('code');
         obj.amount = $('#amount').val();
         obj.expiryDate = $('#expiryDate').val();
         obj.expiryTime = $('#expiryTime').val();
@@ -625,7 +623,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $('#title').val(obj.title);
         $('#shortDescription').val(obj.shortDescription);
         $('#url').val(obj.url);
-        $('#longDescription').val(obj.longDescription);
+        $('#longDescription').summernote('code', obj.longDescription);
+        //$('#longDescription').html(obj.longDescription);
         $('#amount').val(obj.amount);
 
         $("#fileListBody").empty();

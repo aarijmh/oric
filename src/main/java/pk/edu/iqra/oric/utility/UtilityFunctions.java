@@ -1,9 +1,11 @@
 package pk.edu.iqra.oric.utility;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.File;
 import java.security.Principal;
+import java.security.SecureRandom;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -20,9 +22,8 @@ public class UtilityFunctions {
     private static final String BASE_DRIVE = System.getProperty("user.home") + File.separator;
     private static final String BASE_FOLDER = BASE_DRIVE+"OricDOcuments"+ File.separator;
 
-
-
-
+    public static final  BCryptPasswordEncoder bCryptEncoder =
+            new BCryptPasswordEncoder(10, new SecureRandom());
 
 
 
@@ -66,7 +67,7 @@ public class UtilityFunctions {
 
     public static String getURLForDocumentUpload(Integer oricSessionId, Integer researchId, Integer type){
         StringBuffer buffer = new StringBuffer();
-        buffer.append(BASE_FOLDER).append(ServiceConstants.DIRECTORY_MAP.get(type)).append(oricSessionId).append(File.separator).append(researchId);
+        buffer.append(BASE_FOLDER).append(oricSessionId).append(ServiceConstants.DIRECTORY_MAP.get(type)).append(File.separator).append(researchId);
         return buffer.toString();
     }
 }

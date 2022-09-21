@@ -44,6 +44,9 @@ public class University {
     @Column(name = "province", length = 45)
     private String province;
 
+    @Column(name = "encrypted_id", length = 500)
+    private String encryptedId;
+
     public Integer getId() {
         return id;
     }
@@ -132,4 +135,11 @@ public class University {
         this.province = province;
     }
 
+    public String getEncryptedId() {
+        return encryptedId;
+    }
+
+    public void setEncryptedId(String encryptedId) {
+        this.encryptedId = encryptedId;
+    }
 }

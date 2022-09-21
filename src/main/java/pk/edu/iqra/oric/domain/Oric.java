@@ -39,6 +39,15 @@ public class Oric {
     @Column(name = "bank_account_number", length = 200)
     private String bankAccountNumber;
 
+    @Column(name = "mission")
+    private String mission;
+
+    @Column(name = "vision")
+    private String vision;
+
+    @Column(name = "about", length = 200)
+    private String about;
+
     public Integer getId() {
         return id;
     }
@@ -119,4 +128,27 @@ public class Oric {
         this.bankAccountNumber = bankAccountNumber;
     }
 
+    public String getMission() {
+        return mission;
+    }
+
+    public void setMission(String mission) {
+        this.mission = mission;
+    }
+
+    public String getVision() {
+        return vision;
+    }
+
+    public void setVision(String vision) {
+        this.vision = vision;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
 }

@@ -13,6 +13,10 @@ public class OricDTO {
     private Integer focal;
     private String bankAccount;
 
+    private String mission;
+    private String vision;
+    private String about;
+
     public OricDTO(){
 
     }
@@ -29,6 +33,9 @@ public class OricDTO {
         this.bankAccount = oric.getBankAccountNumber();
         this.focalPersonWebsite = oric.getWebpageFocalPerson();
         this.focal = oric.getFocalPerson().getId();
+        this.about = oric.getAbout();
+        this.mission = oric.getMission();
+        this.vision = oric.getVision();
     }
 
     public Integer getId() {
@@ -101,5 +108,29 @@ public class OricDTO {
 
     public void setBankAccount(String bankAccount) {
         this.bankAccount = bankAccount;
+    }
+
+    public String getMission() {
+        return mission;
+    }
+
+    public void setMission(String mission) {
+        this.mission = mission;
+    }
+
+    public String getVision() {
+        return vision;
+    }
+
+    public void setVision(String vision) {
+        this.vision = vision;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
     }
 }
