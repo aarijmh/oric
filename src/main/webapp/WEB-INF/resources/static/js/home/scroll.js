@@ -86,7 +86,7 @@ function handleScrollContent(data){
     jQuery(div4).html(innDiv);
     li.append(div4);
 
-    let openDiv = $("<div ><a href=\"javascript:openAd('as4$$64CV23','"+data.id+"')\">View Details</a></div>")
+    let openDiv = $("<div ><a href=\"javascript:openAd('as4$$64CV23','"+data.id+"','main_content')\">View Details</a></div>")
     li.append(openDiv);
     let div5 = jQuery("<div style=\"clear:both\"></div>");
     li.append(div5);
@@ -94,7 +94,7 @@ function handleScrollContent(data){
     return li;
 }
 
-function openAd(univ,id){
+function openAd(univ,id,div_id){
     let ajaxParams = new Object();
         ajaxParams.type = "GET";
         ajaxParams.url = "/public/getPuclicAd/university/"+univ_id+"/adId/"+id;
@@ -102,11 +102,13 @@ function openAd(univ,id){
         ajaxParams.processData = false;
         ajaxParams.data = [];
         ajaxParams.univ = univ;
+        ajaxParams.succCallBackParams = new Object();
+        ajaxParams.succCallBackParams.divId = div_id;
         ajaxCall(ajaxParams,displayAd,null,null,null);
 }
 
-function displayAd(ad,univ){
-    $("#main_content").html(ad.longDescription);
+function displayAd(ad,param){
+    $("#"+param.divId).html(ad.longDescription);
 
     let ajaxParams = new Object();
     ajaxParams.type = "GET";

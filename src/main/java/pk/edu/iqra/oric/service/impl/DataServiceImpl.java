@@ -82,4 +82,9 @@ public class DataServiceImpl implements DataService {
         announcementTypeRepository.findAll().forEach(list::add);
         return list;
     }
+
+    @Override
+    public String getAnnouncementTypeName(Integer typeId) {
+        return announcementTypeRepository.findById(typeId).get().getName();
+    }
 }

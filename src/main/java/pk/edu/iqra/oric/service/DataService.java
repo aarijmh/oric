@@ -16,4 +16,6 @@ public interface DataService {
     List<OricPositionsTitle> getOricPositionsTitles();
 
     List<AnnouncementType> getAnnouncementTypes();
+
+    String getAnnouncementTypeName(Integer typeId);
 }
