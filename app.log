@@ -311,3 +311,80 @@ Consider defining a bean of type 'pk.edu.iqra.oric.repository.AnnouncementReposi
 2022-09-27 08:54:41,899 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [RMI TCP Connection(1)-172.17.64.1] Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-09-27 08:54:41,899 INFO org.springframework.web.servlet.DispatcherServlet [RMI TCP Connection(1)-172.17.64.1] Initializing Servlet 'dispatcherServlet'
 2022-09-27 08:54:41,900 INFO org.springframework.web.servlet.DispatcherServlet [RMI TCP Connection(1)-172.17.64.1] Completed initialization in 1 ms
+2022-09-27 09:14:53,744 WARN org.springframework.web.servlet.PageNotFound [http-nio-8090-exec-2] No mapping for GET /favicon.ico
+2022-09-27 09:15:17,474 WARN org.springframework.web.servlet.PageNotFound [http-nio-8090-exec-9] No mapping for GET /favicon.ico
+2022-09-27 10:34:04,224 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-27 10:34:04,258 INFO com.zaxxer.hikari.HikariDataSource [Thread-5] HikariPool-1 - Shutdown initiated...
+2022-09-27 10:34:04,273 INFO com.zaxxer.hikari.HikariDataSource [Thread-5] HikariPool-1 - Shutdown completed.
+2022-09-27 10:34:04,592 INFO pk.edu.iqra.oric.OricApplicationStarter [restartedMain] Starting OricApplicationStarter using Java 18.0.1 on LAPTOP-90SPLKL0 with PID 38784 (C:\Users\Lenovo\IdeaProjects\oric\target\classes started by Lenovo in C:\Users\Lenovo\IdeaProjects\oric)
+2022-09-27 10:34:04,592 INFO pk.edu.iqra.oric.OricApplicationStarter [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-09-27 10:34:05,166 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-27 10:34:05,285 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 118 ms. Found 27 JPA repository interfaces.
+2022-09-27 10:34:05,445 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8090 (http)
+2022-09-27 10:34:05,446 INFO org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2022-09-27 10:34:05,447 INFO org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-09-27 10:34:05,480 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-09-27 10:34:05,481 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 884 ms
+2022-09-27 10:34:05,607 INFO org.flywaydb.core.internal.license.VersionPrinter [restartedMain] Flyway Community Edition 8.5.11 by Redgate
+2022-09-27 10:34:05,607 INFO org.flywaydb.core.internal.license.VersionPrinter [restartedMain] See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#8.5.11
+2022-09-27 10:34:05,607 INFO org.flywaydb.core.internal.license.VersionPrinter [restartedMain] 
+2022-09-27 10:34:05,608 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-2 - Starting...
+2022-09-27 10:34:05,626 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
+2022-09-27 10:34:05,628 INFO org.flywaydb.core.internal.database.base.BaseDatabaseType [restartedMain] Database: jdbc:mysql://localhost:3306/oric (MySQL 8.0)
+2022-09-27 10:34:05,649 INFO org.flywaydb.core.internal.command.DbValidate [restartedMain] Successfully validated 1 migration (execution time 00:00.009s)
+2022-09-27 10:34:05,658 INFO org.flywaydb.core.internal.command.DbMigrate [restartedMain] Current version of schema `oric`: 1
+2022-09-27 10:34:05,660 INFO org.flywaydb.core.internal.command.DbMigrate [restartedMain] Schema `oric` is up to date. No migration necessary.
+2022-09-27 10:34:05,720 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-27 10:34:05,732 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-09-27 10:34:06,611 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-27 10:34:06,612 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-27 10:34:07,170 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-09-27 10:34:07,272 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-09-27 10:34:07,286 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@736fac94, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@23c490da, org.springframework.security.web.context.SecurityContextPersistenceFilter@4a1f5cc8, org.springframework.security.web.header.HeaderWriterFilter@40b2f3f8, org.springframework.security.web.authentication.logout.LogoutFilter@bcb3772, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@214d6f68, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@cdeeb4a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5ba4f41a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4e5b51d7, org.springframework.security.web.session.SessionManagementFilter@46a4cc44, org.springframework.security.web.access.ExceptionTranslationFilter@214ce968, org.springframework.security.web.access.intercept.AuthorizationFilter@ccc37d2]
+2022-09-27 10:34:07,425 WARN org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-09-27 10:34:07,434 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-09-27 10:34:07,452 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8090 (http) with context path ''
+2022-09-27 10:34:07,462 INFO pk.edu.iqra.oric.OricApplicationStarter [restartedMain] Started OricApplicationStarter in 2.927 seconds (JVM running for 5972.495)
+2022-09-27 10:34:07,465 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-09-27 10:34:09,002 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [Thread-7] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-27 10:34:09,004 INFO com.zaxxer.hikari.HikariDataSource [Thread-7] HikariPool-2 - Shutdown initiated...
+2022-09-27 10:34:09,012 INFO com.zaxxer.hikari.HikariDataSource [Thread-7] HikariPool-2 - Shutdown completed.
+2022-09-27 10:34:09,110 INFO pk.edu.iqra.oric.OricApplicationStarter [restartedMain] Starting OricApplicationStarter using Java 18.0.1 on LAPTOP-90SPLKL0 with PID 38784 (C:\Users\Lenovo\IdeaProjects\oric\target\classes started by Lenovo in C:\Users\Lenovo\IdeaProjects\oric)
+2022-09-27 10:34:09,110 INFO pk.edu.iqra.oric.OricApplicationStarter [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-09-27 10:34:09,522 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-27 10:34:09,636 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 113 ms. Found 27 JPA repository interfaces.
+2022-09-27 10:34:09,727 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8090 (http)
+2022-09-27 10:34:09,727 INFO org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2022-09-27 10:34:09,727 INFO org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-09-27 10:34:09,754 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-09-27 10:34:09,754 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 642 ms
+2022-09-27 10:34:09,806 INFO org.flywaydb.core.internal.license.VersionPrinter [restartedMain] Flyway Community Edition 8.5.11 by Redgate
+2022-09-27 10:34:09,807 INFO org.flywaydb.core.internal.license.VersionPrinter [restartedMain] See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#8.5.11
+2022-09-27 10:34:09,807 INFO org.flywaydb.core.internal.license.VersionPrinter [restartedMain] 
+2022-09-27 10:34:09,807 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-3 - Starting...
+2022-09-27 10:34:09,819 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-3 - Start completed.
+2022-09-27 10:34:09,820 INFO org.flywaydb.core.internal.database.base.BaseDatabaseType [restartedMain] Database: jdbc:mysql://localhost:3306/oric (MySQL 8.0)
+2022-09-27 10:34:09,829 INFO org.flywaydb.core.internal.command.DbValidate [restartedMain] Successfully validated 1 migration (execution time 00:00.003s)
+2022-09-27 10:34:09,834 INFO org.flywaydb.core.internal.command.DbMigrate [restartedMain] Current version of schema `oric`: 1
+2022-09-27 10:34:09,834 INFO org.flywaydb.core.internal.command.DbMigrate [restartedMain] Schema `oric` is up to date. No migration necessary.
+2022-09-27 10:34:09,861 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-27 10:34:09,870 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-09-27 10:34:10,385 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-27 10:34:10,385 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-27 10:34:10,750 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-09-27 10:34:10,808 INFO org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver [restartedMain] Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-09-27 10:34:10,816 INFO org.springframework.security.web.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@56e274b1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@69115676, org.springframework.security.web.context.SecurityContextPersistenceFilter@50432216, org.springframework.security.web.header.HeaderWriterFilter@78eef770, org.springframework.security.web.authentication.logout.LogoutFilter@1727cc5e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7f8e0222, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6ea56cb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@9b06411, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@f85f9e3, org.springframework.security.web.session.SessionManagementFilter@42d2b113, org.springframework.security.web.access.ExceptionTranslationFilter@5b71a1d4, org.springframework.security.web.access.intercept.AuthorizationFilter@4935f8f7]
+2022-09-27 10:34:10,897 WARN org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-09-27 10:34:10,902 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-09-27 10:34:10,921 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8090 (http) with context path ''
+2022-09-27 10:34:10,928 INFO pk.edu.iqra.oric.OricApplicationStarter [restartedMain] Started OricApplicationStarter in 1.859 seconds (JVM running for 5975.962)
+2022-09-27 10:34:10,930 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-09-27 10:46:41,984 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8090-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-27 10:46:41,984 INFO org.springframework.web.servlet.DispatcherServlet [http-nio-8090-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-09-27 10:46:41,988 INFO org.springframework.web.servlet.DispatcherServlet [http-nio-8090-exec-1] Completed initialization in 3 ms
+2022-09-27 11:08:43,783 WARN org.springframework.web.servlet.PageNotFound [http-nio-8090-exec-6] No mapping for GET /favicon.ico
+2022-09-27 11:09:43,318 WARN org.springframework.web.servlet.PageNotFound [http-nio-8090-exec-7] No mapping for GET /favicon.ico
+2022-09-27 11:51:54,890 WARN com.zaxxer.hikari.pool.HikariPool [HikariPool-3 housekeeper] HikariPool-3 - Thread starvation or clock leap detected (housekeeper delta=19m44s57ms307µs).
+2022-09-27 16:09:46,993 WARN com.zaxxer.hikari.pool.HikariPool [HikariPool-3 housekeeper] HikariPool-3 - Thread starvation or clock leap detected (housekeeper delta=3h39m28s514ms805µs300ns).
+2022-09-27 19:21:15,208 WARN com.zaxxer.hikari.pool.HikariPool [HikariPool-3 housekeeper] HikariPool-3 - Thread starvation or clock leap detected (housekeeper delta=3h28s34ms642µs900ns).
+2022-09-27 20:26:31,161 WARN com.zaxxer.hikari.pool.HikariPool [HikariPool-3 housekeeper] HikariPool-3 - Thread starvation or clock leap detected (housekeeper delta=1h5m22s644ms982µs600ns).
