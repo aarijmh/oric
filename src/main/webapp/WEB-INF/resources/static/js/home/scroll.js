@@ -2,10 +2,14 @@ var univ_id = "as4$$64CV23";
 function initializeScroll(){
     initializeScroller("news-container_5121");
     initializeScroller("news-container_callForPaper");
+    initializeScroller("news-container_workshop");
     initializeScroller("news-container_consultancy");
+    initializeScroller("news-container_internship");
 
     fetchNews(1,"sliderUL");
     fetchNews(2,"sliderULCallForPaper");
+    fetchNews(5,"sliderULWorkshop");
+    fetchNews(4,"sliderULInternship");
     fetchNews(3,"sliderULConsultancy");
 }
 
@@ -108,7 +112,7 @@ function openAd(univ,id,div_id){
 }
 
 function displayAd(ad,param){
-    $("#"+param.divId).html(ad.longDescription);
+    $("#"+param.divId).html("<b>"+ad.title+"</b><br></br>"+ad.longDescription);
 
     let ajaxParams = new Object();
     ajaxParams.type = "GET";

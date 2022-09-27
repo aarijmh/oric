@@ -65,7 +65,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <table style="font-size: 14px;"
                            class="table table-hover  table-bordered table-sm table-responsive-sm mx-auto greenTable"
                            id="dataTable" data-unique-id="id" data-use-row-attr-func="true"
-
+                           data-page-list="[10, 25, 50, 100, all]"
+                           data-pagination="true"
                     >
                     </table>
                 </div>
@@ -163,7 +164,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $table.bootstrapTable({
             url: "/public/getPublicAnnouncement/university/as4$$64CV23/type/" + $("#typeId").val(),
             columns: columns,
-            search: true
+            search: true,
+            height : 550,
+            onPostBody: function(data) {
+
+                let box = $(".fixed-table-body")[0];
+                const scrollbarWidth = Math.ceil($(".fixed-table-body").width()) - $(".fixed-table-body").get(0).scrollWidth;
+
+                    $($(".fixed-table-header")[0]).css({
+                        'margin-left': '-' + scrollbarWidth + 'px'
+                    })
+            }
         })
     }
 

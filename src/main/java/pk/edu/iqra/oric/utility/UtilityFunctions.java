@@ -67,7 +67,7 @@ public class UtilityFunctions {
 
     public static String getURLForDocumentUpload(Integer oricSessionId, Integer researchId, Integer type){
         StringBuffer buffer = new StringBuffer();
-        buffer.append(BASE_FOLDER).append(oricSessionId).append(ServiceConstants.DIRECTORY_MAP.get(type)).append(File.separator).append(researchId);
+        buffer.append(BASE_FOLDER).append(oricSessionId).append(File.separator).append(ServiceConstants.DIRECTORY_MAP.get(type)).append(File.separator).append(researchId);
         return buffer.toString();
     }
 }

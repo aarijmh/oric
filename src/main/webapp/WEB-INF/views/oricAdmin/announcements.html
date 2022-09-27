@@ -57,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- /.content-header -->
 
         <!-- Main content -->
-        <div class="container-xl" style="height: 500px">
+        <div class="container-xl">
             <div class="row mb-2">
                 <div class="col-md-6">
                     <button id="addUser" class="btn-primary">Add</button>
@@ -68,6 +68,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <table style="font-size: 14px;"
                        class="table table-hover  table-bordered table-sm table-responsive-sm mx-auto greenTable"
                        id="dataTable" data-unique-id="id" data-use-row-attr-func="true"
+                       data-pagination="true"
+                       data-page-list="[10, 25, 50, 100, all]" data-height="300px"
 
                 >
                 </table>
@@ -224,7 +226,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                     <label>longDescription</label>
 
-                                    <textarea id='longDescription' class='form-control ' style='width: 100%;height: 200px'>
+                                    <textarea id='longDescription' class='form-control ' style='width: 100%;height: 200px; overflow: scroll'>
                                     </textarea>
 
                                 </div>
@@ -393,7 +395,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     },
         {
             field: 'title',
-            width: '200',
+            width: '250',
             title: 'Title'
         },
         {
@@ -413,7 +415,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         },
         {
             field: 'amount',
-            width: '50',
+            width: '80',
             title: "Amount"
         },
         {
@@ -470,7 +472,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $table.bootstrapTable({
             url: "/oricAdmin/oricSession/" + $("#oricSessionId").val() + "/getResource/" + $("#resourceType").val(),
             columns: columns,
-            search: true
+            search: true,
+            height: 500
         })
     }
 
