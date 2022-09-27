@@ -21,7 +21,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="/resources/static/css/bootstrap-table.css">
     <link rel="stylesheet"
           href="/resources/static/css/bootstrap-datepicker.css">
-
+    <link href="/resources/static/css/summernote.min.css" rel="stylesheet">
 
 </head>
 <body class="hold-transition layout-top-nav">
@@ -276,6 +276,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="/resources/static/js/select2.full.min.js"></script>
 <script src="/resources/static/js/sweetalert2.all.min.js"></script>
 <script src="/resources/static/js/util.js"></script>
+<script src="/resources/static/js/summernote.min.js"></script>
 <script>
 
     const $table = $("#dataTable");
@@ -400,6 +401,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 }
             });
         });
+
+        $("#vision").summernote();
+        $("#mission").summernote();
+        $("#about").summernote();
     }
 
     function populateFieldsORIC(oricDTO) {

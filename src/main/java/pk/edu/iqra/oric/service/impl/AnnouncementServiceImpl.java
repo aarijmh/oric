@@ -131,8 +131,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
     public List<PublicAnnouncementDTO> getPublicAnnouncements(String universityId, Integer typeId) {
 
         University university = universityService.getUniversityByEncryptedId(universityId);
-
-        Date date = Date.from(LocalDate.now().plusWeeks(1l).atStartOfDay(ZoneId.systemDefault()).toInstant());
         return repository.findAnnouncementsOfUniversity(university.getId(), typeId, LocalDate.now().plusWeeks(1)).
                 stream().
                 map(x -> new PublicAnnouncementDTO(x)).

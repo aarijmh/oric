@@ -20,7 +20,7 @@ public interface AnnouncementRepository extends CrudRepository<Announcement,Inte
     @Query("from Announcement rl where rl.faculty.campus.id = ?1")
     List<Announcement> findOfCampus(Integer campusId);
 
-    @Query("from Announcement rl where rl.oricSession.university.id = ?1 and rl.announcementType.id = ?2 and rl.expiryDate <= ?3")
+    @Query("from Announcement rl where rl.oricSession.university.id = ?1 and rl.oricSession.isClosed = false and rl.announcementType.id = ?2 and rl.expiryDate <= ?3 order by rl.createdOn desc")
     List<Announcement> findAnnouncementsOfUniversity(Integer universityId, Integer typeId, LocalDate limit);
 
     @Query("from Announcement rl where rl.id = ?2 and rl.oricSession.university.encryptedId = ?1")
