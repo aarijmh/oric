@@ -133,7 +133,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         University university = universityService.getUniversityByEncryptedId(universityId);
         return repository.findAnnouncementsOfUniversity(university.getId(), typeId, LocalDate.now().plusWeeks(1)).
                 stream().
-                map(x -> new PublicAnnouncementDTO(x)).
+                map(x -> new PublicAnnouncementDTO(x,false)).
                 collect(Collectors.toList());
     }
 

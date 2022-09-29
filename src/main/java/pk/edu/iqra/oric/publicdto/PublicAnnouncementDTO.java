@@ -23,11 +23,17 @@ public class PublicAnnouncementDTO {
         this.id = announcement.getId();
         this.shortDescription = announcement.getShortDescription();
         this.title = announcement.getTitle();
-        this.longDescription = announcement.getLongDescription();
         this.url = announcement.getUrl();
         this.expiryDate = UtilityFunctions.localDateToString(announcement.getExpiryDate());
         this.expiryTime = announcement.getExpiryTime();
     }
+
+    public PublicAnnouncementDTO(Announcement announcement, boolean includeLong){
+        this(announcement);
+        if(includeLong)
+            this.longDescription = announcement.getLongDescription();
+    }
+
 
     public Integer getId() {
         return id;

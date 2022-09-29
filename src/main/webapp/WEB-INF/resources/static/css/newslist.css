@@ -1,0 +1,53 @@
+/* jquery.newslist css */
+.newslist {
+  border: 1px solid #fff;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  width: 200px;
+}
+
+.newslist > div {
+  color: #000;
+  font-size: 1.2em;
+  height: 130px;
+  line-height: 1.1em;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin: 0;
+  padding: 0;
+}
+.newslist > div > div {
+  margin: 0;
+  padding: 10px;
+  position: relative;
+}
+.newslist > div > a {
+  color: #0067ac;
+  font-size: 1em;
+}
+
+.newslist .controls {
+
+  display: block;
+  height: 22px;
+  margin: 0;
+  overflow: hidden;
+  text-align: right;
+}
+.newslist .controls a {
+  background: grey;
+  color: #fff;
+  margin: 3px 2px 0 0;
+  padding: 2px 5px;
+  text-decoration: none;
+}
+.newslist .controls a:hover {
+  text-decoration: none;
+}
+.newslist .controls a.on,
+.newslist .controls a.current {
+  background: #00a5d9;
+}

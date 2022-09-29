@@ -9,9 +9,8 @@
     <title>Iqra University -- ORIC</title>
 
 
-    <!-- Bootstrap core CSS -->
     <link href="/resources/static/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
-
+    <link href="/resources/static/css/newslist.css" rel="stylesheet"  crossorigin="anonymous">
 
     <style>
         .navfont{
@@ -81,12 +80,15 @@
 <script src="/resources/static/js/bootstrap.bundle.js" crossorigin="anonymous"></script>
 <script src="/resources/static/js/jv.js"></script>
 <script src="/resources/static/js/home/genericajax.js"></script>
+<script src="/resources/static/js/jquery.newslist.js"></script>
 <script src="/resources/static/js/home/scroll.js"></script>
+
 <script>
 
     $(document).ready(function() {
         populateInfoORIC();
         initializeScroll();
+        $("#customList").newslist({ "cycleSpeed" : 2000 });
     });
 
     function populateInfoORIC(){
